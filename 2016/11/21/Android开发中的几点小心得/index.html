@@ -100,7 +100,7 @@
 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。
 全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。
 与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式">
-<meta property="og:updated_time" content="2016-11-21T10:42:19.000Z">
+<meta property="og:updated_time" content="2016-11-21T11:14:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发中的几点小心得">
 <meta name="twitter:description" content="不积跬步无以至千里，不积小流无以成江河
@@ -342,16 +342,6 @@
 <li>如果数据没有必要加载，数据请务必延迟初始化，谨记为用户节省内存，总不会有坏处</li>
 <li>注释，尽量去写足够的注释，去描述一下思路，达到看了可以明白某一块代码的效果。</li>
 </ol>
-<h3 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h3><ol>
-<li>一个 int 值与一个 Integer 对象（能包含 int 值的最小对象）的大小比率约为 1:4（32位和64位机器有不同）。额外的开销源于 JVM 用于描述 Java 对象的元数据也就是 Integer，（Long、Double等也是）。</li>
-<li>Hash 集合的访问性能比任何 List 的性能都要高，但每条目的成本也要更高。由于访问性能方面的原因，如果您正在创建大集合（例如，用于实现缓存），那么最好使用基于 Hash 的集合，而不必考虑额外的开销。</li>
-<li>对于并不那么注重访问性能的较小集合而言，List 则是合理的选择。ArrayList 和 LinkedList 集合的性能大体相同，但其内存占用完全不同：ArrayList 的每条目大小要比 LinkedList 小得多，但它不是准确设置大小的。List 要使用的正确实现是 ArrayList 还是 LinkedList 取决于 List 长度的可预测性。如果长度未知，那么正确的选择可能是 LinkedList，因为集合包含的空白空间更少。如果大小已知或可预知或比较小，那么 ArrayList 的内存开销会更低一些。</li>
-<li>由于String类的immutable性质，当String变量需要经常变换其值时，应该考虑使用StringBuilder提升性能，多线程使用StringBuffer操作string提高程序效率。</li>
-<li>java 栈的优势是比堆速度快，可共享，主要存放临时变量、参数等，堆的优势是可动态分配内存大小。</li>
-<li>只要是用new()来新建对象的，都会在堆中创建，而且其数据是单独存值的，即使与栈中的数据（值）相同，也不会与栈中的数据共享。</li>
-<li>选择正确的集合类型使你能够在集合性能与内存占用之间达到合理的平衡。除此之外，你可以通过正确调整集合大小来最大化填充率、最小化未得到利用的空间，从而最大限度地减少内存占用。</li>
-<li>编码遇到读写、出入等逻辑要双向考虑，文件导入导出，字符字节相互转换都要两边转码。</li>
-</ol>
 
       
     </div>
@@ -380,22 +370,6 @@
         </div>
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/11/20/Hexo入门/" rel="next" title="Hexo入门">
-                <i class="fa fa-chevron-left"></i> Hexo入门
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -460,7 +434,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -470,7 +444,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -505,7 +479,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用篇"><span class="nav-number">1.</span> <span class="nav-text">通用篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础篇"><span class="nav-number">2.</span> <span class="nav-text">基础篇</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用篇"><span class="nav-number">1.</span> <span class="nav-text">通用篇</span></a></li></ol></div>
             
 
           </div>

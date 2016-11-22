@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="首先看一下他们之间的关系Collection    ├ List    │    ├ LinkedList    │    ├ ArrayList    │    └ Vector    │ 　     └ Stack    └ Set        ├ HashSet        │ 　 └ LinkedHashSet        └ TreeSet
-对于List，关心的是顺序，它保证维护元">
+<meta name="description" content="夯实基础 砥砺前行
+
+####首先看一下他们之间的关系Collection    ├ List    │    ├ LinkedList    │    ├ ArrayList    │    └ Vector    │ 　     └ Stack    └ Set        ├ HashSet        │ 　 └ LinkedHashSet        └ TreeSet
+###对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA基础数据结构">
 <meta property="og:url" content="http://weiYz.github.io/2016/11/21/JAVA基础数据结构/index.html">
 <meta property="og:site_name" content="Wei.Yz's Blog">
-<meta property="og:description" content="首先看一下他们之间的关系Collection    ├ List    │    ├ LinkedList    │    ├ ArrayList    │    └ Vector    │ 　     └ Stack    └ Set        ├ HashSet        │ 　 └ LinkedHashSet        └ TreeSet
-对于List，关心的是顺序，它保证维护元">
-<meta property="og:updated_time" content="2016-11-22T06:11:40.000Z">
+<meta property="og:description" content="夯实基础 砥砺前行
+
+####首先看一下他们之间的关系Collection    ├ List    │    ├ LinkedList    │    ├ ArrayList    │    └ Vector    │ 　     └ Stack    └ Set        ├ HashSet        │ 　 └ LinkedHashSet        └ TreeSet
+###对">
+<meta property="og:updated_time" content="2016-11-22T06:53:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA基础数据结构">
-<meta name="twitter:description" content="首先看一下他们之间的关系Collection    ├ List    │    ├ LinkedList    │    ├ ArrayList    │    └ Vector    │ 　     └ Stack    └ Set        ├ HashSet        │ 　 └ LinkedHashSet        └ TreeSet
-对于List，关心的是顺序，它保证维护元">
+<meta name="twitter:description" content="夯实基础 砥砺前行
+
+####首先看一下他们之间的关系Collection    ├ List    │    ├ LinkedList    │    ├ ArrayList    │    └ Vector    │ 　     └ Stack    └ Set        ├ HashSet        │ 　 └ LinkedHashSet        └ TreeSet
+###对">
 
 
 
@@ -314,13 +320,23 @@
       
 
       
-        <p>首先看一下他们之间的关系<br>Collection<br>    ├ List<br>    │    ├ LinkedList<br>    │    ├ ArrayList<br>    │    └ Vector<br>    │ 　     └ Stack<br>    └ Set<br>        ├ HashSet<br>        │ 　 └ LinkedHashSet<br>        └ TreeSet</p>
-<p>对于List，关心的是顺序，它保证维护元素特定的顺序（允许有相同元素），使用此接口能够精确的控制每个元素插入的位置。用户能够使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素。</p>
-<p>对于Set，只关心某元素是否属于Set（不允许有相同元素 ），而不关心它的顺序。</p>
+        <blockquote>
+<p>夯实基础 砥砺前行</p>
+</blockquote>
+<p>####首先看一下他们之间的关系<br>Collection<br>    ├ List<br>    │    ├ LinkedList<br>    │    ├ ArrayList<br>    │    └ Vector<br>    │ 　     └ Stack<br>    └ Set<br>        ├ HashSet<br>        │ 　 └ LinkedHashSet<br>        └ TreeSet</p>
+<p>###对于List:<br>关心的是顺序，它保证维护元素特定的顺序（允许有相同元素），使用此接口能够精确的控制每个元素插入的位置。用户能够使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素。</p>
+<p>###对于Set:<br>只关心某元素是否属于Set（不允许有相同元素 ），而不关心它的顺序。</p>
 <p>Map<br>├ Hashtable<br>├ HashMap<br>│    ├ LinkedHashMap<br>│    └ WeakHashMap<br>├ TreeMap<br>└ IdentifyHashMap</p>
-<p>对于 Map，最大的特点是键值映射，且为一一映射，键不能重复，值可以，所以是用键来索引值。<br>Map同样对每个元素保存一份，但这是基于 “ 键 “ 的， Map 也有内置的排序，因而不关心元素添加的顺序。如果添加元素的顺序对你很重要，应该使用 LinkedHashSet 或者 LinkedHashMap。<br>对于效率，Map 由于采用了哈希散列，查找元素时明显比 ArrayList 快。</p>
-<p>更为精炼的总结：<br>Collection 是对象集合， Collection 有两个子接口 List 和 Set<br>List 可以通过下标 (1,2..) 来取得值，值可以重复<br>而 Set 只能通过游标来取值，并且值是不能重复的<br>ArrayList ， Vector ， LinkedList 是 List 的实现类<br>ArrayList 是线程不安全的， Vector 是线程安全的，这两个类底层都是由数组实现的<br>LinkedList 是线程不安全的，底层是由链表实现的   </p>
-<p>Map 是键值对集合<br>HashTable 和 HashMap 是 Map 的实现类<br>HashTable 是线程安全的，不能存储 null 值<br>HashMap 不是线程安全的，可以存储 null 值  </p>
+<p>###对于 Map:<br>最大的特点是键值映射，且为一一映射，键不能重复，值可以，所以是用键来索引值。<br>Map同样对每个元素保存一份，但这是基于 “ 键 “ 的， Map 也有内置的排序，因而不关心元素添加的顺序。如果添加元素的顺序对你很重要，应该使用 LinkedHashSet 或者 LinkedHashMap。<br>对于效率，Map 由于采用了哈希散列，查找元素时明显比 ArrayList 快。</p>
+<p>–</p>
+<p>###更为精炼的总结：<br><strong>Collection是对象集合</strong>，Collection有两个子接口<strong>List</strong> 和 <strong>Set</strong>;<br><strong>List</strong> 可以通过下标来取得值，值可以重复;<br><strong>Set</strong> 只能通过游标来取值，值不能重复;</p>
+<blockquote>
+<p>ArrayList， Vector ， LinkedList 是 List 的实现类;<br>ArrayList 是线程不安全的， Vector 是线程安全的，这两个类底层都是由数组实现的;<br>LinkedList 是线程不安全的，底层是由链表实现的 ; </p>
+</blockquote>
+<p><strong>Map 是键值对集合</strong>,<br><strong>HashTable</strong> 和 <strong>HashMap</strong> 是 <strong>Map</strong>的实现类;</p>
+<blockquote>
+<p>HashTable 是线程安全的，不能存储 null 值   ;<br>HashMap 不是线程安全的，可以存储 null 值  ;</p>
+</blockquote>
 
       
     </div>

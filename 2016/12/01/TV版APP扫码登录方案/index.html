@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android开发," />
+  <meta name="keywords" content="EventBus," />
 
 
 
@@ -84,31 +84,37 @@
 
 
 
-<meta name="description" content="不积跬步无以至千里，不积小流无以成江河
+<meta name="description" content="特殊应用场景，智能电视上的扫描登录
 
-通用篇
-做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。
-全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。
-与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式">
+通常来说需要扫码有几种场景:
+
+用微信、QQ或者微博进行三方登录
+TV上输入不方便，在手机页面输入更便利
+
+123456789st=&amp;gt;start: Starte=&amp;gt;end: Endop1=&amp;gt;operation: My Operationsub1=&amp;gt;subroutine: My Subroutinecond=&amp;gt;condition:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android开发中的几点小心得">
-<meta property="og:url" content="http://weiYz.github.io/2016/11/21/Android开发中的几点小心得/index.html">
+<meta property="og:title" content="TV版APP扫码登录方案">
+<meta property="og:url" content="http://weiYz.github.io/2016/12/01/TV版APP扫码登录方案/index.html">
 <meta property="og:site_name" content="Wei.Yz's Blog">
-<meta property="og:description" content="不积跬步无以至千里，不积小流无以成江河
+<meta property="og:description" content="特殊应用场景，智能电视上的扫描登录
 
-通用篇
-做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。
-全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。
-与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式">
-<meta property="og:updated_time" content="2016-11-22T07:01:50.000Z">
+通常来说需要扫码有几种场景:
+
+用微信、QQ或者微博进行三方登录
+TV上输入不方便，在手机页面输入更便利
+
+123456789st=&amp;gt;start: Starte=&amp;gt;end: Endop1=&amp;gt;operation: My Operationsub1=&amp;gt;subroutine: My Subroutinecond=&amp;gt;condition:">
+<meta property="og:updated_time" content="2016-12-01T04:28:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android开发中的几点小心得">
-<meta name="twitter:description" content="不积跬步无以至千里，不积小流无以成江河
+<meta name="twitter:title" content="TV版APP扫码登录方案">
+<meta name="twitter:description" content="特殊应用场景，智能电视上的扫描登录
 
-通用篇
-做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。
-全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。
-与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式">
+通常来说需要扫码有几种场景:
+
+用微信、QQ或者微博进行三方登录
+TV上输入不方便，在手机页面输入更便利
+
+123456789st=&amp;gt;start: Starte=&amp;gt;end: Endop1=&amp;gt;operation: My Operationsub1=&amp;gt;subroutine: My Subroutinecond=&amp;gt;condition:">
 
 
 
@@ -136,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://weiYz.github.io/2016/11/21/Android开发中的几点小心得/"/>
+  <link rel="canonical" href="http://weiYz.github.io/2016/12/01/TV版APP扫码登录方案/"/>
 
 
 
 
 
-  <title> Android开发中的几点小心得 | Wei.Yz's Blog </title>
+  <title> TV版APP扫码登录方案 | Wei.Yz's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2016/11/21/Android开发中的几点小心得/">
+  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2016/12/01/TV版APP扫码登录方案/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wei.yz">
@@ -277,7 +283,7 @@
             
             
               
-                Android开发中的几点小心得
+                TV版APP扫码登录方案
               
             
           </h1>
@@ -290,8 +296,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-21T17:37:46+08:00">
-                2016-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T12:08:39+08:00">
+                2016-12-01
               </time>
             
 
@@ -327,21 +333,14 @@
 
       
         <blockquote>
-<p>不积跬步无以至千里，不积小流无以成江河</p>
+<p>特殊应用场景，智能电视上的扫描登录</p>
 </blockquote>
-<h3 id="通用篇"><a href="#通用篇" class="headerlink" title="通用篇"></a>通用篇</h3><ol>
-<li>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</li>
-<li>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</li>
-<li>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</li>
-<li>全局变量放全局类中，模块私有放自己的管理类中，让常量清晰且集。其他类遵守SRP（单一职能），ISP（接口隔离）原则。</li>
-<li>Log请打上Tag，调试打印一定要做标记，能定位打印位置，否则尴尬是：不知道是哪里在打印。</li>
-<li>异常抛出，在合适的位置处理或者集中处理，不要搞的到处是catch，混乱且性能低，尽量不要在循环体中捕获异常，以提升性能。</li>
-<li>构造函数里面极度不推荐启动异步线程，会埋下隐患。</li>
-<li>千万不要理所当然的以为一个对象不会为空，充分的做好容错处理。</li>
-<li>服务器和客户端尽量统一唯一标识（有可能是ID），否则多少会有歧义和问题。</li>
-<li>如果数据没有必要加载，数据请务必延迟初始化，谨记为用户节省内存，总不会有坏处</li>
-<li>注释，尽量去写足够的注释，去描述一下思路，达到看了可以明白某一块代码的效果。</li>
+<p>通常来说需要扫码有几种场景:</p>
+<ol>
+<li>用微信、QQ或者微博进行三方登录</li>
+<li>TV上输入不方便，在手机页面输入更便利</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: Start</div><div class="line">e=&gt;end: End</div><div class="line">op1=&gt;operation: My Operation</div><div class="line">sub1=&gt;subroutine: My Subroutine</div><div class="line">cond=&gt;condition: Yes or No?</div><div class="line">io=&gt;inputoutput: catch something...</div><div class="line">st-&gt;op1-&gt;cond</div><div class="line">cond(yes)-&gt;io-&gt;e</div><div class="line">cond(no)-&gt;sub1(right)-&gt;op1</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -365,7 +364,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android开发/" rel="tag"># Android开发</a>
+            <a href="/tags/EventBus/" rel="tag"># EventBus</a>
           
         </div>
       
@@ -374,15 +373,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/01/Android开发中View事件分发/" rel="next" title="Android开发中View事件分发">
+                <i class="fa fa-chevron-left"></i> Android开发中View事件分发
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/21/JAVA基础数据结构/" rel="prev" title="JAVA基础数据结构">
-                JAVA基础数据结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -429,17 +428,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -485,22 +475,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用篇"><span class="nav-number">1.</span> <span class="nav-text">通用篇</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

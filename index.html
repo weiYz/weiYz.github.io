@@ -236,6 +236,136 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2016/12/01/Android单设备（多设备）登录互踢方案/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wei.yz">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Wei.Yz's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Wei.Yz's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/01/Android单设备（多设备）登录互踢方案/" itemprop="url">
+                  Android单设备（多设备）登录互踢方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T14:21:59+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>博学之,审问之,慎思之,明辨之,笃行之</p>
+</blockquote>
+<p><strong>自身账户体系要求同一账号只能在一个设备登录或指定数目设备同时登录</strong></p>
+<p>以优酷土豆为例，假设同一账号同时至多登录 3 台APP设备（可拓展至Web站和Wap站)。</p>
+<blockquote>
+<p>以APP为例</p>
+</blockquote>
+<p><strong>后台需维护一张 userId–devicId–*token–state 的关系表</strong></p>
+<ul>
+<li>假设A账户调用登录接口，此时数据库deviceId的在线记录不足 3 条，则插入此记录；</li>
+<li>假设A账户调用登录接口，但此时已经存在了 3 条deviceId的在线记录，需根据一定调度策略踢掉某一台设备，同时给此deviceId发送推送消息，并将在线状态state置false。被踢掉的APP若收到此推送则执行互踢逻辑；</li>
+<li>假如A账户调用通用接口，后台根据请求参数的deviceId或token判断时候合法，若不在表的在线记录中，在通用返回结果中定义errCode。 被踢掉的设备下一次请求接口时执行互踢逻辑。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2016/12/01/TV版APP扫码登录方案/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,22 +447,22 @@
             <blockquote>
 <p>特殊应用场景，智能电视上的扫描登录</p>
 </blockquote>
-<p>通常来说需要扫码有几种场景:</p>
+<p><strong>目前遇到需要扫码有以下场景:</strong></p>
 <ol>
-<li>用微信、QQ或者微博进行三方登录</li>
-<li>TV上输入不方便，在手机页面输入更便利</li>
+<li>用微信、QQ或者微博进行三方登录；</li>
+<li>UE要求:TV上输入不方便，在手机页面输入更便利。</li>
 </ol>
-<p>实现流程概述:</p>
+<p><strong>实现流程概述</strong>:</p>
 <ol>
-<li><p>TV端根据Guid注册推送标示（Account/TAG）</p>
+<li><p>TV端根据Guid注册推送标示（Account/TAG）；</p>
 </li>
-<li><p>登录时，TV端根据一定规则生成二维码，其中包含能标示此设备的Guid</p>
+<li><p>登录时，TV端根据一定规则生成二维码，其中包含能标示此设备的Guid；</p>
 </li>
-<li><p>手机扫描二维码，根据业务场景需要选择第三方或者自身后台进行鉴权</p>
+<li><p>手机扫描二维码，根据业务场景需要选择第三方或者自身后台进行鉴权；</p>
 </li>
-<li><p>鉴权成功后，后台调用推送接口，推送到指定Guid的TV设备</p>
+<li><p>鉴权成功后，后台调用推送接口，推送到指定Guid的TV设备；</p>
 </li>
-<li><p>TV端收到此推送，执行登录成功逻辑（推荐使用EventBus,用于异步消息的跨线程处理）</p>
+<li><p>TV端收到此推送，执行登录成功逻辑（推荐使用EventBus,用于异步消息的跨线程处理）。</p>
 </li>
 </ol>
 
@@ -452,8 +582,9 @@
         
           
             <blockquote>
-<p>Android的View事件分发是个老生常谈的问题，网上很多讲解和教程，但是在《Android开发艺术探索》中看到这一段伪代码，觉得非常之精辟，特记录下来：</p>
+<p> 书到用时方恨少 白首方悔读书迟</p>
 </blockquote>
+<p>Android的View事件分发是个老生常谈的问题，网上很多讲解和教程，但是在《Android开发艺术探索》中看到这一段伪代码，觉得非常之精辟，特记录下来：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></span>&#123;</div><div class="line">    <span class="keyword">boolean</span> consume=<span class="keyword">false</span>;</div><div class="line">    <span class="keyword">if</span>(onInterceptTouchEvent(ev))&#123;</div><div class="line">         consume=onTouchEvent(ev);      </div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">         consume=child.dispatchTouchEvent(ev);    </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> consume;     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>几个比较重要的结论也一并摘录：</p>
@@ -735,17 +866,28 @@
 <p>不积跬步无以至千里，不积小流无以成江河</p>
 </blockquote>
 <h3 id="通用篇"><a href="#通用篇" class="headerlink" title="通用篇"></a>通用篇</h3><ol>
-<li>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</li>
-<li>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</li>
-<li>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</li>
-<li>全局变量放全局类中，模块私有放自己的管理类中，让常量清晰且集。其他类遵守SRP（单一职能），ISP（接口隔离）原则。</li>
-<li>Log请打上Tag，调试打印一定要做标记，能定位打印位置，否则尴尬是：不知道是哪里在打印。</li>
-<li>异常抛出，在合适的位置处理或者集中处理，不要搞的到处是catch，混乱且性能低，尽量不要在循环体中捕获异常，以提升性能。</li>
-<li>构造函数里面极度不推荐启动异步线程，会埋下隐患。</li>
-<li>千万不要理所当然的以为一个对象不会为空，充分的做好容错处理。</li>
-<li>服务器和客户端尽量统一唯一标识（有可能是ID），否则多少会有歧义和问题。</li>
-<li>如果数据没有必要加载，数据请务必延迟初始化，谨记为用户节省内存，总不会有坏处</li>
-<li>注释，尽量去写足够的注释，去描述一下思路，达到看了可以明白某一块代码的效果。</li>
+<li><p>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</p>
+</li>
+<li><p>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</p>
+</li>
+<li><p>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</p>
+</li>
+<li><p>全局变量放全局类中，模块私有放自己的管理类中，让常量清晰且集。其他类遵守SRP（单一职能），ISP（接口隔离）原则。</p>
+</li>
+<li><p>Log请打上Tag，调试打印一定要做标记，能定位打印位置，否则尴尬是：不知道是哪里在打印。</p>
+</li>
+<li><p>异常抛出，在合适的位置处理或者集中处理，不要搞的到处是catch，混乱且性能低，尽量不要在循环体中捕获异常，以提升性能。</p>
+</li>
+<li><p>构造函数里面极度不推荐启动异步线程，会埋下隐患。</p>
+</li>
+<li><p>千万不要理所当然的以为一个对象不会为空，充分的做好容错处理。</p>
+</li>
+<li><p>服务器和客户端尽量统一唯一标识（有可能是ID），否则多少会有歧义和问题。</p>
+</li>
+<li><p>如果数据没有必要加载，数据请务必延迟初始化，谨记为用户节省内存，总不会有坏处</p>
+</li>
+<li><p>注释，尽量去写足够的注释，去描述一下思路，达到看了可以明白某一块代码的效果。</p>
+</li>
 </ol>
 
           
@@ -817,7 +959,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -827,7 +969,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

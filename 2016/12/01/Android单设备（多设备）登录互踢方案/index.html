@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android开发," />
+  <meta name="keywords" content="互踢," />
 
 
 
@@ -84,37 +84,46 @@
 
 
 
-<meta name="description" content="不积跬步无以至千里，不积小流无以成江河
+<meta name="description" content="博学之,审问之,慎思之,明辨之,笃行之
 
-通用篇
-做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。
+自身账户体系要求同一账号只能在一个设备登录或指定数目设备同时登录
+以优酷土豆为例，假设同一账号同时至多登录 3 台APP设备（可拓展至Web站和Wap站)。
 
-全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。
+以APP为例
 
-与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
+后台需维护一张 userId–devicId–*token–state 的关系表
+
+假设A账户调用登录接口，此时数据库deviceId的在线记录不足 3 条，则插入此记录；
+假设A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android开发中的几点小心得">
-<meta property="og:url" content="http://weiYz.github.io/2016/11/21/Android开发中的几点小心得/index.html">
+<meta property="og:title" content="Android单设备（多设备）登录互踢方案">
+<meta property="og:url" content="http://weiYz.github.io/2016/12/01/Android单设备（多设备）登录互踢方案/index.html">
 <meta property="og:site_name" content="Wei.Yz's Blog">
-<meta property="og:description" content="不积跬步无以至千里，不积小流无以成江河
+<meta property="og:description" content="博学之,审问之,慎思之,明辨之,笃行之
 
-通用篇
-做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。
+自身账户体系要求同一账号只能在一个设备登录或指定数目设备同时登录
+以优酷土豆为例，假设同一账号同时至多登录 3 台APP设备（可拓展至Web站和Wap站)。
 
-全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。
+以APP为例
 
-与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
-<meta property="og:updated_time" content="2016-12-01T06:28:43.000Z">
+后台需维护一张 userId–devicId–*token–state 的关系表
+
+假设A账户调用登录接口，此时数据库deviceId的在线记录不足 3 条，则插入此记录；
+假设A">
+<meta property="og:updated_time" content="2016-12-01T07:41:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android开发中的几点小心得">
-<meta name="twitter:description" content="不积跬步无以至千里，不积小流无以成江河
+<meta name="twitter:title" content="Android单设备（多设备）登录互踢方案">
+<meta name="twitter:description" content="博学之,审问之,慎思之,明辨之,笃行之
 
-通用篇
-做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。
+自身账户体系要求同一账号只能在一个设备登录或指定数目设备同时登录
+以优酷土豆为例，假设同一账号同时至多登录 3 台APP设备（可拓展至Web站和Wap站)。
 
-全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。
+以APP为例
 
-与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
+后台需维护一张 userId–devicId–*token–state 的关系表
+
+假设A账户调用登录接口，此时数据库deviceId的在线记录不足 3 条，则插入此记录；
+假设A">
 
 
 
@@ -142,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="http://weiYz.github.io/2016/11/21/Android开发中的几点小心得/"/>
+  <link rel="canonical" href="http://weiYz.github.io/2016/12/01/Android单设备（多设备）登录互踢方案/"/>
 
 
 
 
 
-  <title> Android开发中的几点小心得 | Wei.Yz's Blog </title>
+  <title> Android单设备（多设备）登录互踢方案 | Wei.Yz's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2016/11/21/Android开发中的几点小心得/">
+  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2016/12/01/Android单设备（多设备）登录互踢方案/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wei.yz">
@@ -283,7 +292,7 @@
             
             
               
-                Android开发中的几点小心得
+                Android单设备（多设备）登录互踢方案
               
             
           </h1>
@@ -296,8 +305,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-21T17:37:46+08:00">
-                2016-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T14:21:59+08:00">
+                2016-12-01
               </time>
             
 
@@ -333,32 +342,19 @@
 
       
         <blockquote>
-<p>不积跬步无以至千里，不积小流无以成江河</p>
+<p>博学之,审问之,慎思之,明辨之,笃行之</p>
 </blockquote>
-<h3 id="通用篇"><a href="#通用篇" class="headerlink" title="通用篇"></a>通用篇</h3><ol>
-<li><p>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</p>
-</li>
-<li><p>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</p>
-</li>
-<li><p>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</p>
-</li>
-<li><p>全局变量放全局类中，模块私有放自己的管理类中，让常量清晰且集。其他类遵守SRP（单一职能），ISP（接口隔离）原则。</p>
-</li>
-<li><p>Log请打上Tag，调试打印一定要做标记，能定位打印位置，否则尴尬是：不知道是哪里在打印。</p>
-</li>
-<li><p>异常抛出，在合适的位置处理或者集中处理，不要搞的到处是catch，混乱且性能低，尽量不要在循环体中捕获异常，以提升性能。</p>
-</li>
-<li><p>构造函数里面极度不推荐启动异步线程，会埋下隐患。</p>
-</li>
-<li><p>千万不要理所当然的以为一个对象不会为空，充分的做好容错处理。</p>
-</li>
-<li><p>服务器和客户端尽量统一唯一标识（有可能是ID），否则多少会有歧义和问题。</p>
-</li>
-<li><p>如果数据没有必要加载，数据请务必延迟初始化，谨记为用户节省内存，总不会有坏处</p>
-</li>
-<li><p>注释，尽量去写足够的注释，去描述一下思路，达到看了可以明白某一块代码的效果。</p>
-</li>
-</ol>
+<p><strong>自身账户体系要求同一账号只能在一个设备登录或指定数目设备同时登录</strong></p>
+<p>以优酷土豆为例，假设同一账号同时至多登录 3 台APP设备（可拓展至Web站和Wap站)。</p>
+<blockquote>
+<p>以APP为例</p>
+</blockquote>
+<p><strong>后台需维护一张 userId–devicId–*token–state 的关系表</strong></p>
+<ul>
+<li>假设A账户调用登录接口，此时数据库deviceId的在线记录不足 3 条，则插入此记录；</li>
+<li>假设A账户调用登录接口，但此时已经存在了 3 条deviceId的在线记录，需根据一定调度策略踢掉某一台设备，同时给此deviceId发送推送消息，并将在线状态state置false。被踢掉的APP若收到此推送则执行互踢逻辑；</li>
+<li>假如A账户调用通用接口，后台根据请求参数的deviceId或token判断时候合法，若不在表的在线记录中，在通用返回结果中定义errCode。 被踢掉的设备下一次请求接口时执行互踢逻辑。</li>
+</ul>
 
       
     </div>
@@ -382,7 +378,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android开发/" rel="tag"># Android开发</a>
+            <a href="/tags/互踢/" rel="tag"># 互踢</a>
           
         </div>
       
@@ -391,15 +387,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/01/TV版APP扫码登录方案/" rel="next" title="TV版APP扫码登录方案">
+                <i class="fa fa-chevron-left"></i> TV版APP扫码登录方案
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/21/JAVA基础数据结构/" rel="prev" title="JAVA基础数据结构">
-                JAVA基础数据结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -446,17 +442,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -502,22 +489,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用篇"><span class="nav-number">1.</span> <span class="nav-text">通用篇</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

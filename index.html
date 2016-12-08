@@ -581,7 +581,7 @@
         
           
             <blockquote>
-<p> 书到用时方恨少 白首方悔读书迟</p>
+<p> 黑发不知勤学早 白首方悔读书迟</p>
 </blockquote>
 <p>Android的View事件分发是个老生常谈的问题，网上很多讲解和教程，但是在《Android开发艺术探索》中看到这一段伪代码，觉得非常之精辟，特记录下来：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></span>&#123;</div><div class="line">    <span class="keyword">boolean</span> consume=<span class="keyword">false</span>;</div><div class="line">    <span class="keyword">if</span>(onInterceptTouchEvent(ev))&#123;</div><div class="line">         consume=onTouchEvent(ev);      </div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">         consume=child.dispatchTouchEvent(ev);    </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> consume;     </div><div class="line">&#125;</div></pre></td></tr></table></figure>

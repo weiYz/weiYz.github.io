@@ -324,13 +324,8 @@
 <li>将媒体资源（MediaSource）设置到SimpleExoPlayer实例中并调用Prepare方法.</li>
 <li>关闭时释放Player.</li>
 </ol>
-<pre><code>// 0.  set player view
-playerView = (SimpleExoPlayerView) findViewById(R.id.playerView);
-playerView.setUseController(false);
-playerView.getKeepScreenOn();
-playerView.setResizeMode(RESIZE_MODE_FILL);
-
-// 1. Create a default TrackSelector
+<p>```java<br>    // 0. set player view<br>    playerView = (SimpleExoPlayerView) findViewById(R.id.playerView);<br>    playerView.setUseController(false);<br>    playerView.getKeepScreenOn();<br>    playerView.setResizeMode(RESIZE_MODE_FILL);</p>
+<pre><code>// 1. Create a default TrackSelector
 TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter());
 trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
 
@@ -352,7 +347,7 @@ DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mContext, &q
 MediaSource videoSource = new ExtractorMediaSource(mUri, dataSourceFactory, extractorsFactory, null, null);
 
 // 6. ready to play
-mPlayer.prepare(videoSource);&apos;&apos;
+mPlayer.prepare(videoSource);
 </code></pre>
           
         

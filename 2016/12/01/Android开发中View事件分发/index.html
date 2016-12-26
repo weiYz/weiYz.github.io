@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="View事件," />
+  <meta name="keywords" content="Android View," />
 
 
 
@@ -96,7 +96,7 @@ Android的View事件分发是个老生常谈的问题，网上很多讲解和教
 
 Android的View事件分发是个老生常谈的问题，网上很多讲解和教程，但是在《Android开发艺术探索》中看到这一段伪代码，觉得非常之精辟，特记录下来：
 123456789public boolean dispatchTouchEvent(MotionEvent ev)&amp;#123;    boolean consume=false;    if(onInt">
-<meta property="og:updated_time" content="2016-12-08T09:34:03.000Z">
+<meta property="og:updated_time" content="2016-12-26T10:56:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发中View事件分发">
 <meta name="twitter:description" content="黑发不知勤学早 白首方悔读书迟
@@ -329,7 +329,7 @@ Android的View事件分发是个老生常谈的问题，网上很多讲解和教
 <p>几个比较重要的结论也一并摘录：</p>
 </blockquote>
 <ol>
-<li><p>当一个点击事件产生后，它的传递过程遵循如下顺序：Activity-&gt;Window-&gt;View,即事件总是先传递给Activity，Activity在传递给Window，最后Window在传递给顶级View。顶级View接收到事件后，就会按照事件分发机制去分发事件。考虑一种情况，如果一个View的onTouchEvent返回false，那么它的父容器的onTouchEvent将会被调用，依此类推。如果所用的元素都不处理这个事件，那么这个事件将会最终传递给Activity处理，即Activity的onTouchEvent方法被调用。</p>
+<li><p>当一个点击事件产生后，它的传递过程遵循如下顺序：Activity->Window->View,即事件总是先传递给Activity，Activity在传递给Window，最后Window在传递给顶级View。顶级View接收到事件后，就会按照事件分发机制去分发事件。考虑一种情况，如果一个View的onTouchEvent返回false，那么它的父容器的onTouchEvent将会被调用，依此类推。如果所用的元素都不处理这个事件，那么这个事件将会最终传递给Activity处理，即Activity的onTouchEvent方法被调用。</p>
 </li>
 <li><p>正常情况下，一个事件序列只能被一个View拦截且消耗，因为一旦一个元素拦截了某个事件，那么同一个事件序列内的所有事件都会直接交给它处理，因此同一个事件序列中的事件不能分别有两个View同时处理，但是通过特殊手段可以做到，比如一个View将本该自己处理的事件通过onTouchEvent强行传递给其他View处理。</p>
 </li>
@@ -375,7 +375,7 @@ Android的View事件分发是个老生常谈的问题，网上很多讲解和教
       
         <div class="post-tags">
           
-            <a href="/tags/View事件/" rel="tag"># View事件</a>
+            <a href="/tags/Android-View/" rel="tag"># Android View</a>
           
         </div>
       
@@ -465,7 +465,7 @@ Android的View事件分发是个老生常谈的问题，网上很多讲解和教
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

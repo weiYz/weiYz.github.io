@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android ExoPlayer," />
 
 
 
@@ -84,13 +84,28 @@
 
 
 
+<meta name="description" content="本文基于ExoPlayer 2.x，翻译了https://google.github.io/ExoPlayer/guide.html的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准
+
+如何快速使用ExoPlayer ? 仅需要如下几步：
+添加 ExoPlayer依赖到你的项目.
+实现ExoPlayer接口，创建 SimpleE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ExoPlayer最简用法">
 <meta property="og:url" content="http://weiYz.github.io/2016/12/26/ExoPlayer最简用法/index.html">
 <meta property="og:site_name" content="Wei.Yz's Blog">
-<meta property="og:updated_time" content="2016-12-26T10:35:05.000Z">
+<meta property="og:description" content="本文基于ExoPlayer 2.x，翻译了https://google.github.io/ExoPlayer/guide.html的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准
+
+如何快速使用ExoPlayer ? 仅需要如下几步：
+添加 ExoPlayer依赖到你的项目.
+实现ExoPlayer接口，创建 SimpleE">
+<meta property="og:updated_time" content="2016-12-26T11:50:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ExoPlayer最简用法">
+<meta name="twitter:description" content="本文基于ExoPlayer 2.x，翻译了https://google.github.io/ExoPlayer/guide.html的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准
+
+如何快速使用ExoPlayer ? 仅需要如下几步：
+添加 ExoPlayer依赖到你的项目.
+实现ExoPlayer接口，创建 SimpleE">
 
 
 
@@ -308,7 +323,24 @@
       
 
       
-        
+        <blockquote>
+<p>本文基于ExoPlayer 2.x，翻译了<a href="">https://google.github.io/ExoPlayer/guide.html</a>的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准</p>
+</blockquote>
+<h4 id="如何快速使用ExoPlayer-仅需要如下几步："><a href="#如何快速使用ExoPlayer-仅需要如下几步：" class="headerlink" title="如何快速使用ExoPlayer ? 仅需要如下几步："></a>如何快速使用ExoPlayer ? 仅需要如下几步：</h4><ol>
+<li>添加 ExoPlayer依赖到你的项目.</li>
+<li>实现ExoPlayer接口，创建 SimpleExoPlayer实例.</li>
+<li>将 SimpleExoPlayer实例关联到PlayerView上.</li>
+<li>将媒体资源（MediaSource）设置到SimpleExoPlayer实例中并调用Prepare方法.</li>
+<li>关闭时释放Player.</li>
+</ol>
+<p>`// 0.  set player view<br>playerView = (SimpleExoPlayerView) findViewById(R.id.playerView);<br>playerView.setUseController(false);<br>playerView.getKeepScreenOn();<br>playerView.setResizeMode(RESIZE_MODE_FILL);  </p>
+<p>// 1. Create a default TrackSelector<br>TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter());<br>trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);  </p>
+<p>// 2. Create a default LoadControl<br>loadControl = new DefaultLoadControl();  </p>
+<p>// 3. Create the Player<br>mPlayer = ExoPlayerFactory.newSimpleInstance(mContext, trackSelector, loadControl);<br>mPlayer.addListener(this);  </p>
+<p>// 4. set player<br>playerView.setPlayer(mPlayer);<br>mPlayer.setPlayWhenReady(true);  </p>
+<p>// 5. prepare to play<br>mUri = Uri.parse(“file:///android_asset/H264_4M_1080.ts”);<br>ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();<br>DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mContext, “UserAgent”);<br>MediaSource videoSource = new ExtractorMediaSource(mUri, dataSourceFactory, extractorsFactory, null, null);  </p>
+<p>// 6. ready to play<br>mPlayer.prepare(videoSource);`</p>
+
       
     </div>
 
@@ -328,6 +360,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-ExoPlayer/" rel="tag"># Android ExoPlayer</a>
+          
+        </div>
       
 
       
@@ -389,8 +427,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -411,7 +458,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -436,6 +483,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何快速使用ExoPlayer-仅需要如下几步："><span class="nav-number">1.</span> <span class="nav-text">如何快速使用ExoPlayer ? 仅需要如下几步：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

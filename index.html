@@ -314,7 +314,24 @@
       
         
           
-            
+            <blockquote>
+<p>本文基于ExoPlayer 2.x，翻译了<a href="">https://google.github.io/ExoPlayer/guide.html</a>的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准</p>
+</blockquote>
+<h4 id="如何快速使用ExoPlayer-仅需要如下几步："><a href="#如何快速使用ExoPlayer-仅需要如下几步：" class="headerlink" title="如何快速使用ExoPlayer ? 仅需要如下几步："></a>如何快速使用ExoPlayer ? 仅需要如下几步：</h4><ol>
+<li>添加 ExoPlayer依赖到你的项目.</li>
+<li>实现ExoPlayer接口，创建 SimpleExoPlayer实例.</li>
+<li>将 SimpleExoPlayer实例关联到PlayerView上.</li>
+<li>将媒体资源（MediaSource）设置到SimpleExoPlayer实例中并调用Prepare方法.</li>
+<li>关闭时释放Player.</li>
+</ol>
+<p>`// 0.  set player view<br>playerView = (SimpleExoPlayerView) findViewById(R.id.playerView);<br>playerView.setUseController(false);<br>playerView.getKeepScreenOn();<br>playerView.setResizeMode(RESIZE_MODE_FILL);  </p>
+<p>// 1. Create a default TrackSelector<br>TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter());<br>trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);  </p>
+<p>// 2. Create a default LoadControl<br>loadControl = new DefaultLoadControl();  </p>
+<p>// 3. Create the Player<br>mPlayer = ExoPlayerFactory.newSimpleInstance(mContext, trackSelector, loadControl);<br>mPlayer.addListener(this);  </p>
+<p>// 4. set player<br>playerView.setPlayer(mPlayer);<br>mPlayer.setPlayWhenReady(true);  </p>
+<p>// 5. prepare to play<br>mUri = Uri.parse(“file:///android_asset/H264_4M_1080.ts”);<br>ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();<br>DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mContext, “UserAgent”);<br>MediaSource videoSource = new ExtractorMediaSource(mUri, dataSourceFactory, extractorsFactory, null, null);  </p>
+<p>// 6. ready to play<br>mPlayer.prepare(videoSource);`</p>
+
           
         
       
@@ -585,7 +602,7 @@
 <p>几个比较重要的结论也一并摘录：</p>
 </blockquote>
 <ol>
-<li><p>当一个点击事件产生后，它的传递过程遵循如下顺序：Activity-&gt;Window-&gt;View,即事件总是先传递给Activity，Activity在传递给Window，最后Window在传递给顶级View。顶级View接收到事件后，就会按照事件分发机制去分发事件。考虑一种情况，如果一个View的onTouchEvent返回false，那么它的父容器的onTouchEvent将会被调用，依此类推。如果所用的元素都不处理这个事件，那么这个事件将会最终传递给Activity处理，即Activity的onTouchEvent方法被调用。</p>
+<li><p>当一个点击事件产生后，它的传递过程遵循如下顺序：Activity->Window->View,即事件总是先传递给Activity，Activity在传递给Window，最后Window在传递给顶级View。顶级View接收到事件后，就会按照事件分发机制去分发事件。考虑一种情况，如果一个View的onTouchEvent返回false，那么它的父容器的onTouchEvent将会被调用，依此类推。如果所用的元素都不处理这个事件，那么这个事件将会最终传递给Activity处理，即Activity的onTouchEvent方法被调用。</p>
 </li>
 <li><p>正常情况下，一个事件序列只能被一个View拦截且消耗，因为一旦一个元素拦截了某个事件，那么同一个事件序列内的所有事件都会直接交给它处理，因此同一个事件序列中的事件不能分别有两个View同时处理，但是通过特殊手段可以做到，比如一个View将本该自己处理的事件通过onTouchEvent强行传递给其他View处理。</p>
 </li>
@@ -857,9 +874,7 @@
       
         
           
-            <blockquote>
-<p>不积跬步无以至千里，不积小流无以成江河</p>
-</blockquote>
+            <p> ><br> >不积跬步无以至千里，不积小流无以成江河<br> >     </p>
 <h3 id="通用篇"><a href="#通用篇" class="headerlink" title="通用篇"></a>通用篇</h3><ol>
 <li><p>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</p>
 </li>
@@ -964,7 +979,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

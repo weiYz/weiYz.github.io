@@ -314,18 +314,14 @@
       
         
           
-            <h3 id="AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。"><a href="#AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。" class="headerlink" title="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。"></a>AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。</h3><p>####1 —&gt; “Java 找不到类名”</p>
-<p>带包名的，需要在包名最上层的目录执行。<br>例如你的类在xxx/demo(包名)/HelloWorld(类名),<br>然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件</p>
+            <h3 id="AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。"><a href="#AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。" class="headerlink" title="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。"></a>AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。</h3><h4 id="1-—-gt-“Java-找不到类名”"><a href="#1-—-gt-“Java-找不到类名”" class="headerlink" title="1 —&gt; “Java 找不到类名”"></a>1 —&gt; “Java 找不到类名”</h4><p>带包名的，需要在包名最上层的目录执行。<br>例如你的类在xxx/demo(包名)/HelloWorld(类名),<br>然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件</p>
 <p> <img src="/2017/12/05/Mac上JNI开发遇到的问题总结/jni_1.png" alt=""><br>在MAC Android Studio中  “classpath”  为“从当前目录到包名最上层目录” 的路径</p>
 <p><img src="/2017/12/05/Mac上JNI开发遇到的问题总结/jni_2.png" alt=""></p>
-<p>####2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；</p>
-<p>1、c++中的方法Java_xxx_xxx 中的Java首字母一定要大写,注意格式不要写错。</p>
+<h4 id="2-—-gt-“java-lang-UnsatisfiedLinkError-Native-method-not-found”；"><a href="#2-—-gt-“java-lang-UnsatisfiedLinkError-Native-method-not-found”；" class="headerlink" title="2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；"></a>2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；</h4><p>1、c++中的方法Java_xxx_xxx 中的Java首字母一定要大写,注意格式不要写错。</p>
 <p>2、如果是 .cpp 文件 则用 extern “C” {“您的方法在这里”}，大括号里是您的本地方法。</p>
-<p>####3 —&gt;“java.lang.UnsatisfiedLinkError:couldn’t find “libXXX.so” </p>
-<p>这个问题是因为运行时没有load到指定的so库，检查拼写、路径和gradle配置。</p>
+<h4 id="3-—-gt-“java-lang-UnsatisfiedLinkError-couldn’t-find-“libXXX-so”"><a href="#3-—-gt-“java-lang-UnsatisfiedLinkError-couldn’t-find-“libXXX-so”" class="headerlink" title="3 —&gt;“java.lang.UnsatisfiedLinkError:couldn’t find “libXXX.so”"></a>3 —&gt;“java.lang.UnsatisfiedLinkError:couldn’t find “libXXX.so”</h4><p>这个问题是因为运行时没有load到指定的so库，检查拼写、路径和gradle配置。</p>
 <p>在AndroidStudio中 “android{} ”标签中的“defaultConfig”标签中加入 “NDK”设置<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line">    applicationId <span class="string">"wei.jni2"</span></div><div class="line">    minSdkVersion <span class="number">15</span></div><div class="line">    targetSdkVersion <span class="number">21</span></div><div class="line">    versionCode <span class="number">1</span></div><div class="line">    versionName <span class="string">"1.0"</span></div><div class="line">    ndk &#123;</div><div class="line">        moduleName <span class="string">"cLib"</span> <span class="comment">// &lt;-- This is the name of my C++ module!</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>####4 —&gt; “Type ‘JNICALL’ could not be resolved”</p>
-<ol>
+<h4 id="4-—-gt-“Type-‘JNICALL’-could-not-be-resolved”"><a href="#4-—-gt-“Type-‘JNICALL’-could-not-be-resolved”" class="headerlink" title="4 —&gt; “Type ‘JNICALL’ could not be resolved”"></a>4 —&gt; “Type ‘JNICALL’ could not be resolved”</h4><ol>
 <li>Project Properties -&gt; C/C++ General -&gt; Path and Symbols</li>
 <li>选择include标签，Add -&gt; $Android_NDK_HOME/platforms/android-14/arch-arm/usr/include</li>
 <li>选中All languages.</li>
@@ -457,32 +453,8 @@
 <li>将媒体资源（MediaSource）设置到SimpleExoPlayer实例中并调用Prepare方法.</li>
 <li>关闭时释放Player.</li>
 </ol>
-<p>```java<br>    // 0. set player view<br>    playerView = (SimpleExoPlayerView) findViewById(R.id.playerView);<br>    playerView.setUseController(false);<br>    playerView.getKeepScreenOn();<br>    playerView.setResizeMode(RESIZE_MODE_FILL);</p>
-<pre><code>// 1. Create a default TrackSelector
-TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter());
-trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 0. set player view</span></div><div class="line">playerView = (SimpleExoPlayerView) findViewById(R.id.playerView);</div><div class="line">playerView.setUseController(<span class="keyword">false</span>);</div><div class="line">playerView.getKeepScreenOn();</div><div class="line">playerView.setResizeMode(RESIZE_MODE_FILL);</div><div class="line"></div><div class="line"><span class="comment">// 1. Create a default TrackSelector</span></div><div class="line">TrackSelection.Factory videoTrackSelectionFactory = <span class="keyword">new</span> AdaptiveVideoTrackSelection.Factory(<span class="keyword">new</span> DefaultBandwidthMeter());</div><div class="line">trackSelector = <span class="keyword">new</span> DefaultTrackSelector(videoTrackSelectionFactory);</div><div class="line"></div><div class="line"><span class="comment">// 2. Create a default LoadControl</span></div><div class="line">loadControl = <span class="keyword">new</span> DefaultLoadControl();</div><div class="line"></div><div class="line"><span class="comment">// 3. Create the Player</span></div><div class="line">mPlayer = ExoPlayerFactory.newSimpleInstance(mContext, trackSelector, loadControl);</div><div class="line">mPlayer.addListener(<span class="keyword">this</span>);</div><div class="line"></div><div class="line"><span class="comment">// 4. set player</span></div><div class="line">playerView.setPlayer(mPlayer);</div><div class="line">mPlayer.setPlayWhenReady(<span class="keyword">true</span>);</div><div class="line"></div><div class="line"><span class="comment">// 5. prepare to play</span></div><div class="line">mUri = Uri.parse(<span class="string">"file:///android_asset/H264_4M_1080.ts"</span>);</div><div class="line">ExtractorsFactory extractorsFactory = <span class="keyword">new</span> DefaultExtractorsFactory();</div><div class="line">DataSource.Factory dataSourceFactory = <span class="keyword">new</span> DefaultDataSourceFactory(mContext, <span class="string">"UserAgent"</span>);</div><div class="line">MediaSource videoSource = <span class="keyword">new</span> ExtractorMediaSource(mUri, dataSourceFactory, extractorsFactory, <span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line"></div><div class="line"><span class="comment">// 6. ready to play</span></div><div class="line">mPlayer.prepare(videoSource);</div></pre></td></tr></table></figure>
 
-// 2. Create a default LoadControl
-loadControl = new DefaultLoadControl();
-
-// 3. Create the Player
-mPlayer = ExoPlayerFactory.newSimpleInstance(mContext, trackSelector, loadControl);
-mPlayer.addListener(this);
-
-// 4. set player
-playerView.setPlayer(mPlayer);
-mPlayer.setPlayWhenReady(true);
-
-// 5. prepare to play
-mUri = Uri.parse(&quot;file:///android_asset/H264_4M_1080.ts&quot;);
-ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mContext, &quot;UserAgent&quot;);
-MediaSource videoSource = new ExtractorMediaSource(mUri, dataSourceFactory, extractorsFactory, null, null);
-
-// 6. ready to play
-mPlayer.prepare(videoSource);
-```
-</code></pre>
           
         
       

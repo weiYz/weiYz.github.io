@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android ExoPlayer," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,28 +84,25 @@
 
 
 
-<meta name="description" content="本文基于ExoPlayer 2.x，翻译了https://google.github.io/ExoPlayer/guide.html的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准
-
-如何快速使用ExoPlayer ? 仅需要如下几步：
-添加 ExoPlayer依赖到你的项目.
-实现ExoPlayer接口，创建 SimpleE">
+<meta name="description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。####1 —&amp;gt; “Java 找不到类名”
+带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件
+ 在MAC Android Studio中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ExoPlayer最简用法">
-<meta property="og:url" content="http://weiYz.github.io/2016/12/26/ExoPlayer最简用法/index.html">
+<meta property="og:title" content="Mac上JNI开发遇到的问题总结">
+<meta property="og:url" content="http://weiYz.github.io/2017/12/05/Mac上JNI开发遇到的问题总结/index.html">
 <meta property="og:site_name" content="Wei.Yz's Blog">
-<meta property="og:description" content="本文基于ExoPlayer 2.x，翻译了https://google.github.io/ExoPlayer/guide.html的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准
-
-如何快速使用ExoPlayer ? 仅需要如下几步：
-添加 ExoPlayer依赖到你的项目.
-实现ExoPlayer接口，创建 SimpleE">
-<meta property="og:updated_time" content="2017-05-11T03:54:33.000Z">
+<meta property="og:description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。####1 —&amp;gt; “Java 找不到类名”
+带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件
+ 在MAC Android Studio中">
+<meta property="og:image" content="http://weiYz.github.io/2017/12/05/Mac上JNI开发遇到的问题总结/jni_1.png">
+<meta property="og:image" content="http://weiYz.github.io/2017/12/05/Mac上JNI开发遇到的问题总结/jni_2.png">
+<meta property="og:updated_time" content="2017-12-05T07:47:18.862Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ExoPlayer最简用法">
-<meta name="twitter:description" content="本文基于ExoPlayer 2.x，翻译了https://google.github.io/ExoPlayer/guide.html的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准
-
-如何快速使用ExoPlayer ? 仅需要如下几步：
-添加 ExoPlayer依赖到你的项目.
-实现ExoPlayer接口，创建 SimpleE">
+<meta name="twitter:title" content="Mac上JNI开发遇到的问题总结">
+<meta name="twitter:description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。####1 —&amp;gt; “Java 找不到类名”
+带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件
+ 在MAC Android Studio中">
+<meta name="twitter:image" content="http://weiYz.github.io/2017/12/05/Mac上JNI开发遇到的问题总结/jni_1.png">
 
 
 
@@ -133,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://weiYz.github.io/2016/12/26/ExoPlayer最简用法/"/>
+  <link rel="canonical" href="http://weiYz.github.io/2017/12/05/Mac上JNI开发遇到的问题总结/"/>
 
 
 
 
 
-  <title> ExoPlayer最简用法 | Wei.Yz's Blog </title>
+  <title> Mac上JNI开发遇到的问题总结 | Wei.Yz's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2016/12/26/ExoPlayer最简用法/">
+  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2017/12/05/Mac上JNI开发遇到的问题总结/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wei.yz">
@@ -274,7 +271,7 @@
             
             
               
-                ExoPlayer最简用法
+                Mac上JNI开发遇到的问题总结
               
             
           </h1>
@@ -287,8 +284,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-26T18:35:05+08:00">
-                2016-12-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-05T15:15:51+08:00">
+                2017-12-05
               </time>
             
 
@@ -323,42 +320,24 @@
       
 
       
-        <blockquote>
-<p>本文基于ExoPlayer 2.x，翻译了<a href="">https://google.github.io/ExoPlayer/guide.html</a>的指南，旨在帮助刚开始使用ExoPlayer的朋友快速入门,官方文档中有demo和guide, 如有出入之处以官方为准</p>
-</blockquote>
-<h4 id="如何快速使用ExoPlayer-仅需要如下几步："><a href="#如何快速使用ExoPlayer-仅需要如下几步：" class="headerlink" title="如何快速使用ExoPlayer ? 仅需要如下几步："></a>如何快速使用ExoPlayer ? 仅需要如下几步：</h4><ol>
-<li>添加 ExoPlayer依赖到你的项目.</li>
-<li>实现ExoPlayer接口，创建 SimpleExoPlayer实例.</li>
-<li>将 SimpleExoPlayer实例关联到PlayerView上.</li>
-<li>将媒体资源（MediaSource）设置到SimpleExoPlayer实例中并调用Prepare方法.</li>
-<li>关闭时释放Player.</li>
+        <h3 id="AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。"><a href="#AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。" class="headerlink" title="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。"></a>AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。</h3><p>####1 —&gt; “Java 找不到类名”</p>
+<p>带包名的，需要在包名最上层的目录执行。<br>例如你的类在xxx/demo(包名)/HelloWorld(类名),<br>然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件</p>
+<p> <img src="/2017/12/05/Mac上JNI开发遇到的问题总结/jni_1.png" alt=""><br>在MAC Android Studio中  “classpath”  为“从当前目录到包名最上层目录” 的路径</p>
+<p><img src="/2017/12/05/Mac上JNI开发遇到的问题总结/jni_2.png" alt=""></p>
+<p>####2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；</p>
+<p>1、c++中的方法Java_xxx_xxx 中的Java首字母一定要大写,注意格式不要写错。</p>
+<p>2、如果是 .cpp 文件 则用 extern “C” {“您的方法在这里”}，大括号里是您的本地方法。</p>
+<p>####3 —&gt;“java.lang.UnsatisfiedLinkError:couldn’t find “libXXX.so” </p>
+<p>这个问题是因为运行时没有load到指定的so库，检查拼写、路径和gradle配置。</p>
+<p>在AndroidStudio中 “android{} ”标签中的“defaultConfig”标签中加入 “NDK”设置<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line">    applicationId <span class="string">"wei.jni2"</span></div><div class="line">    minSdkVersion <span class="number">15</span></div><div class="line">    targetSdkVersion <span class="number">21</span></div><div class="line">    versionCode <span class="number">1</span></div><div class="line">    versionName <span class="string">"1.0"</span></div><div class="line">    ndk &#123;</div><div class="line">        moduleName <span class="string">"cLib"</span> <span class="comment">// &lt;-- This is the name of my C++ module!</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>####4 —&gt; “Type ‘JNICALL’ could not be resolved”</p>
+<ol>
+<li>Project Properties -&gt; C/C++ General -&gt; Path and Symbols</li>
+<li>选择include标签，Add -&gt; $Android_NDK_HOME/platforms/android-14/arch-arm/usr/include</li>
+<li>选中All languages.</li>
+<li>最后Apply -&gt; OK</li>
 </ol>
-<p>```java<br>    // 0. set player view<br>    playerView = (SimpleExoPlayerView) findViewById(R.id.playerView);<br>    playerView.setUseController(false);<br>    playerView.getKeepScreenOn();<br>    playerView.setResizeMode(RESIZE_MODE_FILL);</p>
-<pre><code>// 1. Create a default TrackSelector
-TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter());
-trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
 
-// 2. Create a default LoadControl
-loadControl = new DefaultLoadControl();
-
-// 3. Create the Player
-mPlayer = ExoPlayerFactory.newSimpleInstance(mContext, trackSelector, loadControl);
-mPlayer.addListener(this);
-
-// 4. set player
-playerView.setPlayer(mPlayer);
-mPlayer.setPlayWhenReady(true);
-
-// 5. prepare to play
-mUri = Uri.parse(&quot;file:///android_asset/H264_4M_1080.ts&quot;);
-ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mContext, &quot;UserAgent&quot;);
-MediaSource videoSource = new ExtractorMediaSource(mUri, dataSourceFactory, extractorsFactory, null, null);
-
-// 6. ready to play
-mPlayer.prepare(videoSource);
-```
-</code></pre>
       
     </div>
 
@@ -379,19 +358,13 @@ mPlayer.prepare(videoSource);
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Android-ExoPlayer/" rel="tag"># Android ExoPlayer</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/05/Android搭建框架细节处理/" rel="next" title="Android搭建框架细节处理.md">
-                <i class="fa fa-chevron-left"></i> Android搭建框架细节处理.md
+              <a href="/2016/12/26/ExoPlayer最简用法/" rel="next" title="ExoPlayer最简用法">
+                <i class="fa fa-chevron-left"></i> ExoPlayer最简用法
               </a>
             
           </div>
@@ -399,10 +372,6 @@ mPlayer.prepare(videoSource);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/05/Mac上JNI开发遇到的问题总结/" rel="prev" title="Mac上JNI开发遇到的问题总结">
-                Mac上JNI开发遇到的问题总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,7 +484,7 @@ mPlayer.prepare(videoSource);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何快速使用ExoPlayer-仅需要如下几步："><span class="nav-number">1.</span> <span class="nav-text">如何快速使用ExoPlayer ? 仅需要如下几步：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。"><span class="nav-number">1.</span> <span class="nav-text">AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。</span></a></li></ol></div>
             
 
           </div>

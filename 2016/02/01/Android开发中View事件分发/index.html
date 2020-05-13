@@ -9,14 +9,14 @@
   <title>Android开发中View事件分发 | Wei.Yz&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="黑发不知勤学早 白首方悔读书迟  Android的View事件分发是个老生常谈的问题，网上很多讲解和教程，但是在《Android开发艺术探索》中看到这一段伪代码，觉得非常之精辟，特记录下来： 123456789public boolean dispatchTouchEvent(MotionEvent ev)&amp;#123;    boolean consume=false;    if(onInt">
-<meta name="keywords" content="Android View">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发中View事件分发">
 <meta property="og:url" content="http://weiYz.github.io/2016/02/01/Android开发中View事件分发/index.html">
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
 <meta property="og:description" content="黑发不知勤学早 白首方悔读书迟  Android的View事件分发是个老生常谈的问题，网上很多讲解和教程，但是在《Android开发艺术探索》中看到这一段伪代码，觉得非常之精辟，特记录下来： 123456789public boolean dispatchTouchEvent(MotionEvent ev)&amp;#123;    boolean consume=false;    if(onInt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-05T06:53:43.529Z">
+<meta property="og:updated_time" content="2020-05-13T17:22:24.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发中View事件分发">
 <meta name="twitter:description" content="黑发不知勤学早 白首方悔读书迟  Android的View事件分发是个老生常谈的问题，网上很多讲解和教程，但是在《Android开发艺术探索》中看到这一段伪代码，觉得非常之精辟，特记录下来： 123456789public boolean dispatchTouchEvent(MotionEvent ev)&amp;#123;    boolean consume=false;    if(onInt">
@@ -157,6 +157,7 @@
 <blockquote>
 <p>几个比较重要的结论也一并摘录：</p>
 </blockquote>
+<a id="more"></a> 
 <ol>
 <li><p>当一个点击事件产生后，它的传递过程遵循如下顺序：Activity->Window->View,即事件总是先传递给Activity，Activity在传递给Window，最后Window在传递给顶级View。顶级View接收到事件后，就会按照事件分发机制去分发事件。考虑一种情况，如果一个View的onTouchEvent返回false，那么它的父容器的onTouchEvent将会被调用，依此类推。如果所用的元素都不处理这个事件，那么这个事件将会最终传递给Activity处理，即Activity的onTouchEvent方法被调用。</p>
 </li>
@@ -194,7 +195,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android View</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		
 		</ul>

@@ -153,20 +153,9 @@
 <p>骐骥一跃不能十步，驽马十驾功在不舍</p>
 </blockquote>
 <h3 id="首先看一下他们之间的关系"><a href="#首先看一下他们之间的关系" class="headerlink" title="首先看一下他们之间的关系"></a>首先看一下他们之间的关系</h3><p>Collection<br>    ├ List<br>    │ ├ LinkedList<br>    │ ├ ArrayList<br>    │ └ Vector<br>    │ 　  └ Stack<br>  └ Set<br>   ├ HashSet<br>   │ 　 └ LinkedHashSet<br>   └ TreeSet</p>
-<h4 id="对于List"><a href="#对于List" class="headerlink" title="对于List:"></a>对于List:</h4><p>关心的是顺序，它保证维护元素特定的顺序（允许有相同元素），使用此接口能够精确的控制每个元素插入的位置。用户能够使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素。</p>
-<h4 id="对于Set"><a href="#对于Set" class="headerlink" title="对于Set:"></a>对于Set:</h4><p>只关心某元素是否属于Set（不允许有相同元素 ），而不关心它的顺序。</p>
-<p>Map<br>├ Hashtable<br>├ HashMap<br>│ ├ LinkedHashMap<br>│ └ WeakHashMap<br>├ TreeMap<br>└ IdentifyHashMap</p>
-<h4 id="对于Map"><a href="#对于Map" class="headerlink" title="对于Map:"></a>对于Map:</h4><p>最大的特点是键值映射，且为一一映射，键不能重复，值可以，所以是用键来索引值。<br>Map同样对每个元素保存一份，但这是基于 “ 键 “ 的， Map 也有内置的排序，因而不关心元素添加的顺序。如果添加元素的顺序对你很重要，应该使用 LinkedHashSet 或者 LinkedHashMap。<br>对于效率，Map 由于采用了哈希散列，查找元素时明显比 ArrayList 快。</p>
-<hr>
-<h3 id="更为精炼的总结："><a href="#更为精炼的总结：" class="headerlink" title="更为精炼的总结："></a>更为精炼的总结：</h3><p><strong>Collection是对象集合</strong>，Collection有两个子接口<strong>List</strong> 和 <strong>Set</strong>;<br><strong>List</strong> 可以通过下标来取得值，值可以重复;<br><strong>Set</strong> 只能通过游标来取值，值不能重复;</p>
-<blockquote>
-<p>ArrayList， Vector ， LinkedList 是 List 的实现类;<br>ArrayList 是线程不安全的， Vector 是线程安全的，这两个类底层都是由数组实现的;<br>LinkedList 是线程不安全的，底层是由链表实现的 ; </p>
-</blockquote>
-<p><strong>Map 是键值对集合</strong>,<br><strong>HashTable</strong> 和 <strong>HashMap</strong> 是 <strong>Map</strong>的实现类;</p>
-<blockquote>
-<p>HashTable 是线程安全的，不能存储 null 值   ;<br>HashMap 不是线程安全的，可以存储 null 值  ;</p>
-</blockquote>
-
+        
+          <a class="article-more-a" href="/2015/10/21/JAVA基础数据结构/#more">more >></a>
+        
       
 
       

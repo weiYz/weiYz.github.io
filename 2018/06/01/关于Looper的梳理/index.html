@@ -9,13 +9,14 @@
   <title>关于Looper的梳理 | Wei.Yz&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Looper当一个Activity被创建时，ActivityThread的main()方法会被执行。 1234567891011public static void main(String[] args) &amp;#123;    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &amp;quot;ActivityThreadMain&amp;quot;);...">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Looper的梳理">
 <meta property="og:url" content="http://weiYz.github.io/2018/06/01/关于Looper的梳理/index.html">
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
 <meta property="og:description" content="Looper当一个Activity被创建时，ActivityThread的main()方法会被执行。 1234567891011public static void main(String[] args) &amp;#123;    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &amp;quot;ActivityThreadMain&amp;quot;);...">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-09T17:16:42.538Z">
+<meta property="og:updated_time" content="2020-05-13T17:21:35.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Looper的梳理">
 <meta name="twitter:description" content="Looper当一个Activity被创建时，ActivityThread的main()方法会被执行。 1234567891011public static void main(String[] args) &amp;#123;    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &amp;quot;ActivityThreadMain&amp;quot;);...">
@@ -151,6 +152,7 @@
         <h3 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h3><p>当一个Activity被创建时，ActivityThread的<code>main()</code>方法会被执行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &quot;ActivityThreadMain&quot;);</span><br><span class="line">...</span><br><span class="line">	</span><br><span class="line">    Looper.prepareMainLooper();</span><br><span class="line">	</span><br><span class="line">...</span><br><span class="line">    Looper.loop();</span><br><span class="line"></span><br><span class="line">    throw new RuntimeException(&quot;Main thread loop unexpectedly exited&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>主线程Looper的创建是调用Looper的<code>prepareMainLooper()</code>方法来创建Looper对象：</p>
+<a id="more"></a> 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static void prepareMainLooper() &#123;</span><br><span class="line">    prepare(false);</span><br><span class="line">    synchronized (Looper.class) &#123;</span><br><span class="line">        if (sMainLooper != null) &#123;</span><br><span class="line">            throw new IllegalStateException(&quot;The main Looper has already been prepared.&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        sMainLooper = myLooper();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void prepare(boolean quitAllowed) &#123;</span><br><span class="line">    if (sThreadLocal.get() != null) &#123;</span><br><span class="line">        throw new RuntimeException(&quot;Only one Looper may be created per thread&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    sThreadLocal.set(new Looper(quitAllowed));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里的sThreadLocal对象的类型是ThreadLocal<looper>是一个存放在TLS（Thread-local storage)中的对象容器，储存在其中的对象的特点是每个线程中只有一个，并且个线程中储存的该对象不相同。</looper></p>
 <p>我们在这里新建了一个Looper对象并放入了TLS中：</p>
@@ -172,6 +174,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       

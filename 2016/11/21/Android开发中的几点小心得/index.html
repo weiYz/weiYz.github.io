@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
 <meta property="og:description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。  全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。  与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-11T03:52:39.000Z">
+<meta property="og:updated_time" content="2020-05-13T17:22:08.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发中的几点小心得">
 <meta name="twitter:description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。  全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。  与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
@@ -159,6 +159,9 @@
 </li>
 <li><p>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</p>
 </li>
+</ol>
+<a id="more"></a> 
+<ol start="4">
 <li><p>全局变量放全局类中，模块私有放自己的管理类中，让常量清晰且集。其他类遵守SRP（单一职能），ISP（接口隔离）原则。</p>
 </li>
 <li><p>Log请打上Tag，调试打印一定要做标记，能定位打印位置，否则尴尬是：不知道是哪里在打印。</p>

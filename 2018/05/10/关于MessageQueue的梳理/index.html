@@ -9,13 +9,14 @@
   <title>关于MessageQueue的梳理 | Wei.Yz&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="MessageQueue1234MessageQueue(boolean quitAllowed) &amp;#123;    mQuitAllowed = quitAllowed;    mPtr = nativeInit();&amp;#125; 构造函数十分简单，除了初始化quitAllowed标记之外，就是对mPtr的初始化了。 那么mPtr是什么呢？可以推测出的是，真正的MessageQueue的创建一">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于MessageQueue的梳理">
 <meta property="og:url" content="http://weiYz.github.io/2018/05/10/关于MessageQueue的梳理/index.html">
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
 <meta property="og:description" content="MessageQueue1234MessageQueue(boolean quitAllowed) &amp;#123;    mQuitAllowed = quitAllowed;    mPtr = nativeInit();&amp;#125; 构造函数十分简单，除了初始化quitAllowed标记之外，就是对mPtr的初始化了。 那么mPtr是什么呢？可以推测出的是，真正的MessageQueue的创建一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-09T17:13:35.695Z">
+<meta property="og:updated_time" content="2020-05-13T17:21:41.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于MessageQueue的梳理">
 <meta name="twitter:description" content="MessageQueue1234MessageQueue(boolean quitAllowed) &amp;#123;    mQuitAllowed = quitAllowed;    mPtr = nativeInit();&amp;#125; 构造函数十分简单，除了初始化quitAllowed标记之外，就是对mPtr的初始化了。 那么mPtr是什么呢？可以推测出的是，真正的MessageQueue的创建一">
@@ -151,6 +152,7 @@
         <h3 id="MessageQueue"><a href="#MessageQueue" class="headerlink" title="MessageQueue"></a>MessageQueue</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MessageQueue(boolean quitAllowed) &#123;</span><br><span class="line">    mQuitAllowed = quitAllowed;</span><br><span class="line">    mPtr = nativeInit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>构造函数十分简单，除了初始化quitAllowed标记之外，就是对mPtr的初始化了。</p>
 <p>那么mPtr是什么呢？可以推测出的是，真正的MessageQueue的创建一定在nativeInit这个Native调用中，也就是说，我们的MessageQueue实际上存在于Native层。</p>
+<a id="more"></a> 
 <p>android_os_MessageQueue.cpp:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static jlong android_os_MessageQueue_nativeInit(JNIEnv* env, jclass clazz) &#123;</span><br><span class="line">    NativeMessageQueue* nativeMessageQueue = new NativeMessageQueue();</span><br><span class="line">    if (!nativeMessageQueue) &#123;</span><br><span class="line">        jniThrowRuntimeException(env, &quot;Unable to allocate native queue&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    nativeMessageQueue-&gt;incStrong(env);</span><br><span class="line">    return reinterpret_cast&lt;jlong&gt;(nativeMessageQueue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在Native层创建了一个NativeMessageQueue对象：</p>
@@ -179,6 +181,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       

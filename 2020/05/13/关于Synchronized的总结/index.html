@@ -8,25 +8,25 @@
   <link rel="dns-prefetch" href="http://weiYz.github.io">
   <title>关于Synchronized的总结 | Wei.Yz&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法；  修饰静态类方法；  修饰代码块。    synchronized 修饰实例方法 这种情况下的锁">
+  <meta name="description" content="很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法； 修饰静态类方法； 修饰代码块。   synchronized 修饰实例方法 这种情况下的锁对象是">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Synchronized的总结">
 <meta property="og:url" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/index.html">
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
-<meta property="og:description" content="很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法；  修饰静态类方法；  修饰代码块。    synchronized 修饰实例方法 这种情况下的锁">
+<meta property="og:description" content="很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法； 修饰静态类方法； 修饰代码块。   synchronized 修饰实例方法 这种情况下的锁对象是">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/7.png">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/1.png">
-<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/4.png">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/7.png">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/3.png">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/6.png">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/3.png">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/9.png">
-<meta property="og:updated_time" content="2020-05-13T16:39:30.154Z">
+<meta property="og:updated_time" content="2020-05-13T16:43:12.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Synchronized的总结">
-<meta name="twitter:description" content="很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法；  修饰静态类方法；  修饰代码块。    synchronized 修饰实例方法 这种情况下的锁">
+<meta name="twitter:description" content="很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法； 修饰静态类方法； 修饰代码块。   synchronized 修饰实例方法 这种情况下的锁对象是">
 <meta name="twitter:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/7.png">
   
     <link rel="alternative" href="/atom.xml" title="Wei.Yz&#39;s Blog" type="application/atom+xml">
@@ -182,12 +182,9 @@
         <p>很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。<br>synchronized的实现是由 <strong>一对儿</strong> <code>monitorEnter</code> 和 <code>monitorExit</code> 指令实现的。</p>
 <p><strong>synchronized 可以用来修饰以下 3 个层面</strong>：</p>
 <ol>
-<li><p>修饰实例方法；</p>
-</li>
-<li><p>修饰静态类方法；</p>
-</li>
-<li><p>修饰代码块。</p>
-</li>
+<li>修饰实例方法；</li>
+<li>修饰静态类方法；</li>
+<li>修饰代码块。</li>
 </ol>
 <hr>
 <h3 id="synchronized-修饰实例方法"><a href="#synchronized-修饰实例方法" class="headerlink" title="synchronized 修饰实例方法"></a>synchronized 修饰实例方法</h3><blockquote>
@@ -195,29 +192,34 @@
 </blockquote>
 <p>比如如下代码：</p>
 <!--![](关于Synchronized的总结/7.png )-->
-<p><img src="/2020/05/13/关于Synchronized的总结/7.png" width="60%"></p>
+<p><img src="/2020/05/13/关于Synchronized的总结/7.png" width="70%"></p>
 <p>上述代码，在不同的线程中调用的是不同对象的 printLog 方法，因此彼此之间不会有排斥。运行效果如下：</p>
 <!--![](关于Synchronized的总结/1.png)-->
-<p><img src="/2020/05/13/关于Synchronized的总结/1.png" width="50%"></p>
+<p><img src="/2020/05/13/关于Synchronized的总结/1.png" width="30%"></p>
 <p>可以看出，两个线程是乱序执行的。</p>
 <hr>
 <p>如果将代码进行如下修改，两个线程调用同一个对象的 printLog 方法：</p>
-<p><img src="/2020/05/13/关于Synchronized的总结/4.png" alt></p>
+<!--![](关于Synchronized的总结/4.png)-->
+<p><img src="/2020/05/13/关于Synchronized的总结/7.png" width="70%"></p>
 <p>则执行效果如下：</p>
-<p><img src="/2020/05/13/关于Synchronized的总结/3.png" alt></p>
+<!--![](关于Synchronized的总结/3.png)-->
+<p><img src="/2020/05/13/关于Synchronized的总结/3.png" width="30%"></p>
 <p>可以看出：只有某一个线程中的代码执行完之后，才会调用另一个线程中的代码。也就是说此时两个线程间是互斥的。</p>
 <hr>
 <h3 id="修饰静态类方法"><a href="#修饰静态类方法" class="headerlink" title="修饰静态类方法"></a>修饰静态类方法</h3><blockquote>
 <p>如果 synchronized 修饰的是静态方法，则<strong>锁对象是当前类的 Class 对象</strong>。因此即使在不同线程中调用不同实例对象，也会有互斥效果。</p>
 </blockquote>
 <p> 将 printLog 修改为静态方法，如下：</p>
-<p><img src="/2020/05/13/关于Synchronized的总结/6.png" alt></p>
+<!--![](关于Synchronized的总结/6.png)-->
+<p><img src="/2020/05/13/关于Synchronized的总结/6.png" width="70%"></p>
 <p>执行后的打印效果如下：</p>
-<p><img src="/2020/05/13/关于Synchronized的总结/3.png" alt></p>
+<!--![](关于Synchronized的总结/3.png)-->
+<p><img src="/2020/05/13/关于Synchronized的总结/3.png" width="30%"></p>
 <p>可以看出，两个线程还是依次执行的。</p>
 <hr>
 <h3 id="synchronized-修饰代码块"><a href="#synchronized-修饰代码块" class="headerlink" title="synchronized 修饰代码块"></a>synchronized 修饰代码块</h3><p>除了直接修饰方法之外，synchronized 还可以作用于代码块，比如DCL的单例模式，如下代码所示：</p>
-<p><img src="/2020/05/13/关于Synchronized的总结/9.png" alt></p>
+<!--![](关于Synchronized的总结/9.png)-->
+<p><img src="/2020/05/13/关于Synchronized的总结/9.png" width="70%"></p>
 <blockquote>
 <p>synchronized 作用于代码块时，锁对象就是跟在后面括号中的对象。上图中可以看出任何 Object 对象都可以当作锁对象。</p>
 </blockquote>

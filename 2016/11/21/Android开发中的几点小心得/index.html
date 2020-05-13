@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://weiYz.github.io">
   <title>Android开发中的几点小心得 | Wei.Yz&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。  全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。  与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
+  <meta name="description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。 全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。 与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发中的几点小心得">
 <meta property="og:url" content="http://weiYz.github.io/2016/11/21/Android开发中的几点小心得/index.html">
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
-<meta property="og:description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。  全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。  与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
+<meta property="og:description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。 全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。 与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-13T17:22:08.755Z">
+<meta property="og:updated_time" content="2020-05-13T17:27:04.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发中的几点小心得">
-<meta name="twitter:description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。  全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。  与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者">
+<meta name="twitter:description" content="不积跬步无以至千里，不积小流无以成江河  通用篇 做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。 全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。 与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式">
   
     <link rel="alternative" href="/atom.xml" title="Wei.Yz&#39;s Blog" type="application/atom+xml">
   
@@ -153,31 +153,17 @@
 <p>不积跬步无以至千里，不积小流无以成江河</p>
 </blockquote>
 <h3 id="通用篇"><a href="#通用篇" class="headerlink" title="通用篇"></a>通用篇</h3><ol>
-<li><p>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</p>
-</li>
-<li><p>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</p>
-</li>
-<li><p>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</p>
-</li>
-</ol>
-<a id="more"></a> 
-<ol start="4">
-<li><p>全局变量放全局类中，模块私有放自己的管理类中，让常量清晰且集。其他类遵守SRP（单一职能），ISP（接口隔离）原则。</p>
-</li>
-<li><p>Log请打上Tag，调试打印一定要做标记，能定位打印位置，否则尴尬是：不知道是哪里在打印。</p>
-</li>
-<li><p>异常抛出，在合适的位置处理或者集中处理，不要搞的到处是catch，混乱且性能低，尽量不要在循环体中捕获异常，以提升性能。</p>
-</li>
-<li><p>构造函数里面极度不推荐启动异步线程，会埋下隐患。</p>
-</li>
-<li><p>千万不要理所当然的以为一个对象不会为空，充分的做好容错处理。</p>
-</li>
-<li><p>服务器和客户端尽量统一唯一标识（有可能是ID），否则多少会有歧义和问题。</p>
-</li>
-<li><p>如果数据没有必要加载，数据请务必延迟初始化，谨记为用户节省内存，总不会有坏处</p>
-</li>
-<li><p>注释，尽量去写足够的注释，去描述一下思路，达到看了可以明白某一块代码的效果。</p>
-</li>
+<li>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</li>
+<li>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</li>
+<li>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。<a id="more"></a> </li>
+<li>全局变量放全局类中，模块私有放自己的管理类中，让常量清晰且集。其他类遵守SRP（单一职能），ISP（接口隔离）原则。</li>
+<li>Log请打上Tag，调试打印一定要做标记，能定位打印位置，否则尴尬是：不知道是哪里在打印。</li>
+<li>异常抛出，在合适的位置处理或者集中处理，不要搞的到处是catch，混乱且性能低，尽量不要在循环体中捕获异常，以提升性能。</li>
+<li>构造函数里面极度不推荐启动异步线程，会埋下隐患。</li>
+<li>千万不要理所当然的以为一个对象不会为空，充分的做好容错处理。</li>
+<li>服务器和客户端尽量统一唯一标识（有可能是ID），否则多少会有歧义和问题。</li>
+<li>如果数据没有必要加载，数据请务必延迟初始化，谨记为用户节省内存，总不会有坏处</li>
+<li>注释，尽量去写足够的注释，去描述一下思路，达到看了可以明白某一块代码的效果。</li>
 </ol>
 
       
@@ -357,6 +343,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JNI</a>
               </li>
             
             <div class="clearfix"></div>

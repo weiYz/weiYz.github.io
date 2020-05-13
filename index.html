@@ -622,13 +622,9 @@
 <p>不积跬步无以至千里，不积小流无以成江河</p>
 </blockquote>
 <h3 id="通用篇"><a href="#通用篇" class="headerlink" title="通用篇"></a>通用篇</h3><ol>
-<li><p>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</p>
-</li>
-<li><p>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</p>
-</li>
-<li><p>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</p>
-</li>
-</ol>
+<li>做之前先考虑那些可以公用，资源，layout，类，做一个结构、架构分析以加快开发，提升代码可复用度。</li>
+<li>全部Activity可继承自BaseActivity，便于统一风格与处理公共事件，一处修改全局有效，并且注意控制Activity的代码量，保持主要逻辑清晰。</li>
+<li>与Activity通讯使用Handler更方便； 如果你的框架回调链变长，考虑监听者模式简化回调。 监听者模式不方便使用时，推荐EventBus框架库，使用时间总线。</li></ol>
         
           <a class="article-more-a" href="/2016/11/21/Android开发中的几点小心得/#more">more >></a>
         
@@ -788,19 +784,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。"><a href="#AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。" class="headerlink" title="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。"></a>AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。</h3><h4 id="1-—-gt-“Java-找不到类名”"><a href="#1-—-gt-“Java-找不到类名”" class="headerlink" title="1 —&gt; “Java 找不到类名”"></a>1 —&gt; “Java 找不到类名”</h4><p>带包名的，需要在包名最上层的目录执行。<br>例如你的类在xxx/demo(包名)/HelloWorld(类名),<br>然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件</p>
-<p> <img src="/2015/12/05/Mac上JNI开发遇到的问题总结/jni_1.png" alt><br>在MAC Android Studio中  “classpath”  为“从当前目录到包名最上层目录” 的路径</p>
-<p><img src="/2015/12/05/Mac上JNI开发遇到的问题总结/jni_2.png" alt></p>
-<h4 id="2-—-gt-“java-lang-UnsatisfiedLinkError-Native-method-not-found”；"><a href="#2-—-gt-“java-lang-UnsatisfiedLinkError-Native-method-not-found”；" class="headerlink" title="2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；"></a>2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；</h4><p>1、c++中的方法Java_xxx_xxx 中的Java首字母一定要大写,注意格式不要写错。</p>
-<p>2、如果是 .cpp 文件 则用 extern “C” {“您的方法在这里”}，大括号里是您的本地方法。</p>
-<h4 id="3-—-gt-“java-lang-UnsatisfiedLinkError-couldn’t-find-“libXXX-so”"><a href="#3-—-gt-“java-lang-UnsatisfiedLinkError-couldn’t-find-“libXXX-so”" class="headerlink" title="3 —&gt;“java.lang.UnsatisfiedLinkError:couldn’t find “libXXX.so”"></a>3 —&gt;“java.lang.UnsatisfiedLinkError:couldn’t find “libXXX.so”</h4><p>这个问题是因为运行时没有load到指定的so库，检查拼写、路径和gradle配置。</p>
-<p>在AndroidStudio中 “android{} ”标签中的“defaultConfig”标签中加入 “NDK”设置<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">    applicationId <span class="string">"wei.jni2"</span></span><br><span class="line">    minSdkVersion <span class="number">15</span></span><br><span class="line">    targetSdkVersion <span class="number">21</span></span><br><span class="line">    versionCode <span class="number">1</span></span><br><span class="line">    versionName <span class="string">"1.0"</span></span><br><span class="line">    ndk &#123;</span><br><span class="line">        moduleName <span class="string">"cLib"</span> <span class="comment">// &lt;-- This is the name of my C++ module!</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-—-gt-“Type-‘JNICALL’-could-not-be-resolved”"><a href="#4-—-gt-“Type-‘JNICALL’-could-not-be-resolved”" class="headerlink" title="4 —&gt; “Type ‘JNICALL’ could not be resolved”"></a>4 —&gt; “Type ‘JNICALL’ could not be resolved”</h4><ol>
-<li>Project Properties -&gt; C/C++ General -&gt; Path and Symbols</li>
-<li>选择include标签，Add -&gt; $Android_NDK_HOME/platforms/android-14/arch-arm/usr/include</li>
-<li>选中All languages.</li>
-<li>最后Apply -&gt; OK</li>
-</ol>
-
+        
+          <a class="article-more-a" href="/2015/12/05/Mac上JNI开发遇到的问题总结/#more">more >></a>
+        
       
 
       
@@ -808,6 +794,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JNI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1031,6 +1028,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JNI</a>
               </li>
             
             <div class="clearfix"></div>

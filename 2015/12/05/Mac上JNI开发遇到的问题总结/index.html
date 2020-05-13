@@ -8,19 +8,20 @@
   <link rel="dns-prefetch" href="http://weiYz.github.io">
   <title>Mac上JNI开发遇到的问题总结 | Wei.Yz&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。1 —&amp;gt; “Java 找不到类名”带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件  在MAC Android Studio中  “clas">
+  <meta name="description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。1 —&amp;gt; “Java 找不到类名”带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件">
+<meta name="keywords" content="JNI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac上JNI开发遇到的问题总结">
 <meta property="og:url" content="http://weiYz.github.io/2015/12/05/Mac上JNI开发遇到的问题总结/index.html">
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
-<meta property="og:description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。1 —&amp;gt; “Java 找不到类名”带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件  在MAC Android Studio中  “clas">
+<meta property="og:description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。1 —&amp;gt; “Java 找不到类名”带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://weiyz.github.io/2015/12/05/Mac上JNI开发遇到的问题总结/jni_1.png">
 <meta property="og:image" content="http://weiyz.github.io/2015/12/05/Mac上JNI开发遇到的问题总结/jni_2.png">
-<meta property="og:updated_time" content="2017-12-05T07:51:33.353Z">
+<meta property="og:updated_time" content="2020-05-13T17:27:32.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上JNI开发遇到的问题总结">
-<meta name="twitter:description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。1 —&amp;gt; “Java 找不到类名”带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件  在MAC Android Studio中  “clas">
+<meta name="twitter:description" content="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。1 —&amp;gt; “Java 找不到类名”带包名的，需要在包名最上层的目录执行。例如你的类在xxx/demo(包名)/HelloWorld(类名),然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件">
 <meta name="twitter:image" content="http://weiyz.github.io/2015/12/05/Mac上JNI开发遇到的问题总结/jni_1.png">
   
     <link rel="alternative" href="/atom.xml" title="Wei.Yz&#39;s Blog" type="application/atom+xml">
@@ -152,6 +153,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。"><a href="#AndroidStudio-Mac-和-Eclipse-Windows的真是区别巨大。" class="headerlink" title="AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。"></a>AndroidStudio+Mac 和 Eclipse+Windows的真是区别巨大。</h3><h4 id="1-—-gt-“Java-找不到类名”"><a href="#1-—-gt-“Java-找不到类名”" class="headerlink" title="1 —&gt; “Java 找不到类名”"></a>1 —&gt; “Java 找不到类名”</h4><p>带包名的，需要在包名最上层的目录执行。<br>例如你的类在xxx/demo(包名)/HelloWorld(类名),<br>然后在xxx/目录下执行javah -jni demo.HelloWorld，在xxx/目录下就会生成.h文件</p>
+<a id="more"></a> 
 <p> <img src="/2015/12/05/Mac上JNI开发遇到的问题总结/jni_1.png" alt><br>在MAC Android Studio中  “classpath”  为“从当前目录到包名最上层目录” 的路径</p>
 <p><img src="/2015/12/05/Mac上JNI开发遇到的问题总结/jni_2.png" alt></p>
 <h4 id="2-—-gt-“java-lang-UnsatisfiedLinkError-Native-method-not-found”；"><a href="#2-—-gt-“java-lang-UnsatisfiedLinkError-Native-method-not-found”；" class="headerlink" title="2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；"></a>2 —&gt; “java.lang.UnsatisfiedLinkError: Native method not found”；</h4><p>1、c++中的方法Java_xxx_xxx 中的Java首字母一定要大写,注意格式不要写错。</p>
@@ -172,6 +174,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JNI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -331,6 +344,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JNI</a>
               </li>
             
             <div class="clearfix"></div>

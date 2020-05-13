@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -84,8 +84,8 @@
 
 
 
-<meta name="description" content="##synchronized
-很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。
+<meta name="description" content="##synchronized的知识梳理
+很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。
 synchronized 可以用来修饰以下 3 个层面：
 
 修饰实例方法；
@@ -96,15 +96,13 @@ synchronized 可以用来修饰以下 3 个层面：
 
 
 
-###synchronized 修饰实例方法
-
-这种情况下的锁对象是当前实例对象，因此只有同一个实例对象调用此方法才会产生互斥效果，不">
+###sync">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Synchronized的总结">
 <meta property="og:url" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/index.html">
 <meta property="og:site_name" content="Wei.Yz's Blog">
-<meta property="og:description" content="##synchronized
-很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。
+<meta property="og:description" content="##synchronized的知识梳理
+很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。
 synchronized 可以用来修饰以下 3 个层面：
 
 修饰实例方法；
@@ -115,9 +113,7 @@ synchronized 可以用来修饰以下 3 个层面：
 
 
 
-###synchronized 修饰实例方法
-
-这种情况下的锁对象是当前实例对象，因此只有同一个实例对象调用此方法才会产生互斥效果，不">
+###sync">
 <meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/7.png">
 <meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/1.png">
 <meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/4.png">
@@ -125,11 +121,11 @@ synchronized 可以用来修饰以下 3 个层面：
 <meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/6.png">
 <meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/3.png">
 <meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/9.png">
-<meta property="og:updated_time" content="2020-05-13T09:04:34.391Z">
+<meta property="og:updated_time" content="2020-05-13T14:21:02.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Synchronized的总结">
-<meta name="twitter:description" content="##synchronized
-很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。
+<meta name="twitter:description" content="##synchronized的知识梳理
+很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。
 synchronized 可以用来修饰以下 3 个层面：
 
 修饰实例方法；
@@ -140,9 +136,7 @@ synchronized 可以用来修饰以下 3 个层面：
 
 
 
-###synchronized 修饰实例方法
-
-这种情况下的锁对象是当前实例对象，因此只有同一个实例对象调用此方法才会产生互斥效果，不">
+###sync">
 <meta name="twitter:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/7.png">
 
 
@@ -361,8 +355,8 @@ synchronized 可以用来修饰以下 3 个层面：
       
 
       
-        <p>##synchronized</p>
-<p>很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。</p>
+        <p>##synchronized的知识梳理</p>
+<p>很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。<br>synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。</p>
 <p><strong>synchronized 可以用来修饰以下 3 个层面</strong>：</p>
 <ol>
 <li><p>修饰实例方法；</p>
@@ -425,6 +419,12 @@ synchronized 可以用来修饰以下 3 个层面：
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
       
 
       
@@ -508,7 +508,7 @@ synchronized 可以用来修饰以下 3 个层面：
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/6.png">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/3.png">
 <meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/9.png">
-<meta property="og:updated_time" content="2020-05-13T15:54:03.773Z">
+<meta property="og:updated_time" content="2020-05-13T16:39:30.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Synchronized的总结">
 <meta name="twitter:description" content="很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法；  修饰静态类方法；  修饰代码块。    synchronized 修饰实例方法 这种情况下的锁">
@@ -194,9 +194,11 @@
 <p>这种情况下的<strong>锁对象是当前实例对象</strong>，因此只有同一个实例对象调用此方法才会产生互斥效果，不同实例对象之间不会有互斥效果。</p>
 </blockquote>
 <p>比如如下代码：</p>
-<p><img src="/2020/05/13/关于Synchronized的总结/7.png" alt></p>
+<!--![](关于Synchronized的总结/7.png )-->
+<p><img src="/2020/05/13/关于Synchronized的总结/7.png" width="60%"></p>
 <p>上述代码，在不同的线程中调用的是不同对象的 printLog 方法，因此彼此之间不会有排斥。运行效果如下：</p>
-<p><img src="/2020/05/13/关于Synchronized的总结/1.png" alt></p>
+<!--![](关于Synchronized的总结/1.png)-->
+<p><img src="/2020/05/13/关于Synchronized的总结/1.png" width="50%"></p>
 <p>可以看出，两个线程是乱序执行的。</p>
 <hr>
 <p>如果将代码进行如下修改，两个线程调用同一个对象的 printLog 方法：</p>

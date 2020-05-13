@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="##synchronized的知识梳理 很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法；  修饰静态类方法；  修饰代码块。    ###sync">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Synchronized的总结">
+<meta property="og:url" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/index.html">
+<meta property="og:site_name" content="Wei.Yz&#39;s Blog">
+<meta property="og:description" content="##synchronized的知识梳理 很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法；  修饰静态类方法；  修饰代码块。    ###sync">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/7.png">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/1.png">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/4.png">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/3.png">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/6.png">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/3.png">
+<meta property="og:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/9.png">
+<meta property="og:updated_time" content="2020-05-13T14:21:02.356Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Synchronized的总结">
+<meta name="twitter:description" content="##synchronized的知识梳理 很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。 synchronized 可以用来修饰以下 3 个层面：  修饰实例方法；  修饰静态类方法；  修饰代码块。    ###sync">
+<meta name="twitter:image" content="http://weiyz.github.io/2020/05/13/关于Synchronized的总结/7.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/">
+
+
+
+
+
+  <title>关于Synchronized的总结 | Wei.Yz's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wei.Yz's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.yz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wei.Yz's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于Synchronized的总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T16:13:00+08:00">
+                2020-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##synchronized的知识梳理</p>
+<p>很多知识学过、用过但没有梳理出来，就很容易忘。synchronized 作为多线程中非常重要的知识点，需要认真理解。<br>synchronized的实现是由 一对儿 monitorEnter 和 monitorExit 指令实现的。</p>
+<p><strong>synchronized 可以用来修饰以下 3 个层面</strong>：</p>
+<ol>
+<li><p>修饰实例方法；</p>
+</li>
+<li><p>修饰静态类方法；</p>
+</li>
+<li><p>修饰代码块。</p>
+</li>
+</ol>
+<hr>
+<p>###synchronized 修饰实例方法</p>
+<blockquote>
+<p>这种情况下的<strong>锁对象是当前实例对象</strong>，因此只有同一个实例对象调用此方法才会产生互斥效果，不同实例对象之间不会有互斥效果。</p>
+</blockquote>
+<p>比如如下代码：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/7.png" alt></p>
+<p>上述代码，在不同的线程中调用的是不同对象的 printLog 方法，因此彼此之间不会有排斥。运行效果如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/1.png" alt></p>
+<p>可以看出，两个线程是乱序执行的。</p>
+<hr>
+<p>如果将代码进行如下修改，两个线程调用同一个对象的 printLog 方法：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/4.png" alt></p>
+<p>则执行效果如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/3.png" alt></p>
+<p>可以看出：只有某一个线程中的代码执行完之后，才会调用另一个线程中的代码。也就是说此时两个线程间是互斥的。</p>
+<hr>
+<p>###修饰静态类方法</p>
+<blockquote>
+<p>如果 synchronized 修饰的是静态方法，则<strong>锁对象是当前类的 Class 对象</strong>。因此即使在不同线程中调用不同实例对象，也会有互斥效果。</p>
+</blockquote>
+<p> 将 printLog 修改为静态方法，如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/6.png" alt></p>
+<p>执行后的打印效果如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/3.png" alt></p>
+<p>可以看出，两个线程还是依次执行的。</p>
+<hr>
+<p>###synchronized 修饰代码块</p>
+<p>除了直接修饰方法之外，synchronized 还可以作用于代码块，比如DCL的单例模式，如下代码所示：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/9.png" alt></p>
+<blockquote>
+<p>synchronized 作用于代码块时，锁对象就是跟在后面括号中的对象。上图中可以看出任何 Object 对象都可以当作锁对象。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/01/关于Looper的梳理/" rel="next" title="关于Looper的梳理">
+                <i class="fa fa-chevron-left"></i> 关于Looper的梳理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wei.yz</p>
+              <p class="site-description motion-element" itemprop="description">春天不是编码天，夏日炎炎正好眠。秋有蚊虫冬有雪，收拾包裹好过年。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wei.yz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

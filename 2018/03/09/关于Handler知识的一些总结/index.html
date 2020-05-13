@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
 <meta property="og:description" content="Handler构造Handler的构造方法中除了实现默认参数的相互调用外，有内容的有这么两个： 1234567891011public Handler(Callback callback, boolean async) &amp;#123;    ...    mLooper = Looper.myLooper();    if (mLooper == null) &amp;#123;        throw">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-13T17:21:26.077Z">
+<meta property="og:updated_time" content="2020-05-13T17:24:52.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Handler知识的一些总结">
 <meta name="twitter:description" content="Handler构造Handler的构造方法中除了实现默认参数的相互调用外，有内容的有这么两个： 1234567891011public Handler(Callback callback, boolean async) &amp;#123;    ...    mLooper = Looper.myLooper();    if (mLooper == null) &amp;#123;        throw">
@@ -151,9 +151,8 @@
       
         <h3 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h3><p>构造Handler的构造方法中除了实现默认参数的相互调用外，有内容的有这么两个：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public Handler(Callback callback, boolean async) &#123;</span><br><span class="line">    ...</span><br><span class="line">    mLooper = Looper.myLooper();</span><br><span class="line">    if (mLooper == null) &#123;</span><br><span class="line">        throw new RuntimeException(</span><br><span class="line">            &quot;Can&apos;t create handler inside thread that has not called Looper.prepare()&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    mQueue = mLooper.mQueue;</span><br><span class="line">    mCallback = callback;</span><br><span class="line">    mAsynchronous = async;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果传入的了callback，将会保存到mCallback域中，之后的消息处理中会看到。</p>
+<p>如果传入的了callback，将会保存到mCallback域中，之后的消息处理中会看到。<br><a id="more"></a> </p>
 <p>如果没有传入loop参数，将会使用默认的Looper.myLooper()也就是之前提到过的本线程TLS中储存的Looper对象。mQueue消息队列就是从该Looper中获取的消息队列。</p>
-<a id="more"></a> 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public Handler(Looper looper, Callback callback, boolean async) &#123;</span><br><span class="line">    mLooper = looper;</span><br><span class="line">    mQueue = looper.mQueue;</span><br><span class="line">    mCallback = callback;</span><br><span class="line">    mAsynchronous = async;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果传入了looper，那么将从它这里获取对应的消息队列对象，之后的消息就会放入这个队列中，这也是Handler实现跨线程通信的基础。</p>
 <p>发送消息:</p>

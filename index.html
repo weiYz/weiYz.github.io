@@ -389,8 +389,7 @@
       
         <h3 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h3><p>构造Handler的构造方法中除了实现默认参数的相互调用外，有内容的有这么两个：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public Handler(Callback callback, boolean async) &#123;</span><br><span class="line">    ...</span><br><span class="line">    mLooper = Looper.myLooper();</span><br><span class="line">    if (mLooper == null) &#123;</span><br><span class="line">        throw new RuntimeException(</span><br><span class="line">            &quot;Can&apos;t create handler inside thread that has not called Looper.prepare()&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    mQueue = mLooper.mQueue;</span><br><span class="line">    mCallback = callback;</span><br><span class="line">    mAsynchronous = async;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果传入的了callback，将会保存到mCallback域中，之后的消息处理中会看到。</p>
-<p>如果没有传入loop参数，将会使用默认的Looper.myLooper()也就是之前提到过的本线程TLS中储存的Looper对象。mQueue消息队列就是从该Looper中获取的消息队列。</p>
+<p>如果传入的了callback，将会保存到mCallback域中，之后的消息处理中会看到。<br></p>
         
           <a class="article-more-a" href="/2018/03/09/关于Handler知识的一些总结/#more">more >></a>
         
@@ -541,10 +540,8 @@
 </blockquote>
 <h3 id="1-扫描登录"><a href="#1-扫描登录" class="headerlink" title="1. 扫描登录"></a>1. 扫描登录</h3><p><strong>目前遇到需要扫码有以下场景:</strong></p>
 <ol>
-<li><p>用微信、QQ或者微博进行三方登录；</p>
-</li>
-<li><p>UE要求: 智能电视上输入不方便，在手机页面输入更便利。</p>
-</li>
+<li>用微信、QQ或者微博进行三方登录；</li>
+<li>UE要求: 智能电视上输入不方便，在手机页面输入更便利。</li>
 </ol>
         
           <a class="article-more-a" href="/2016/12/01/TV版APP扫码登录方案/#more">more >></a>
@@ -561,7 +558,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Android EventBus</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		
 		</ul>

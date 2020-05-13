@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://weiYz.github.io">
   <title>TV版APP扫码登录方案 | Wei.Yz&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为渠哪得清如，为有源头活水来   1. 扫描登录目前遇到需要扫码有以下场景:  用微信、QQ或者微博进行三方登录；  UE要求: 智能电视上输入不方便，在手机页面输入更便利。">
-<meta name="keywords" content="Android EventBus">
+  <meta name="description" content="为渠哪得清如，为有源头活水来   1. 扫描登录目前遇到需要扫码有以下场景:  用微信、QQ或者微博进行三方登录； UE要求: 智能电视上输入不方便，在手机页面输入更便利。">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TV版APP扫码登录方案">
 <meta property="og:url" content="http://weiYz.github.io/2016/12/01/TV版APP扫码登录方案/index.html">
 <meta property="og:site_name" content="Wei.Yz&#39;s Blog">
-<meta property="og:description" content="为渠哪得清如，为有源头活水来   1. 扫描登录目前遇到需要扫码有以下场景:  用微信、QQ或者微博进行三方登录；  UE要求: 智能电视上输入不方便，在手机页面输入更便利。">
+<meta property="og:description" content="为渠哪得清如，为有源头活水来   1. 扫描登录目前遇到需要扫码有以下场景:  用微信、QQ或者微博进行三方登录； UE要求: 智能电视上输入不方便，在手机页面输入更便利。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-13T17:22:53.280Z">
+<meta property="og:updated_time" content="2020-05-13T17:25:37.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TV版APP扫码登录方案">
-<meta name="twitter:description" content="为渠哪得清如，为有源头活水来   1. 扫描登录目前遇到需要扫码有以下场景:  用微信、QQ或者微博进行三方登录；  UE要求: 智能电视上输入不方便，在手机页面输入更便利。">
+<meta name="twitter:description" content="为渠哪得清如，为有源头活水来   1. 扫描登录目前遇到需要扫码有以下场景:  用微信、QQ或者微博进行三方登录； UE要求: 智能电视上输入不方便，在手机页面输入更便利。">
   
     <link rel="alternative" href="/atom.xml" title="Wei.Yz&#39;s Blog" type="application/atom+xml">
   
@@ -154,24 +154,17 @@
 </blockquote>
 <h3 id="1-扫描登录"><a href="#1-扫描登录" class="headerlink" title="1. 扫描登录"></a>1. 扫描登录</h3><p><strong>目前遇到需要扫码有以下场景:</strong></p>
 <ol>
-<li><p>用微信、QQ或者微博进行三方登录；</p>
-</li>
-<li><p>UE要求: 智能电视上输入不方便，在手机页面输入更便利。</p>
-</li>
+<li>用微信、QQ或者微博进行三方登录；</li>
+<li>UE要求: 智能电视上输入不方便，在手机页面输入更便利。</li>
 </ol>
 <a id="more"></a> 
 <p><strong>实现流程概述</strong>:</p>
 <ol>
-<li><p>APP端根据Guid注册推送标示（Account/TAG）；</p>
-</li>
-<li><p>登录时，APP端根据一定规则生成二维码，其中包含能标示此设备的Guid；</p>
-</li>
-<li><p>手机扫描二维码，根据业务场景需要选择第三方或者自身后台进行鉴权；</p>
-</li>
-<li><p>鉴权成功后，后台调用推送接口，推送到指定Guid的APP设备；</p>
-</li>
-<li><p>APP端收到此推送，执行登录成功逻辑（推荐使用EventBus,用于异步消息的跨线程处理）。</p>
-</li>
+<li>APP端根据Guid注册推送标示（Account/TAG）；</li>
+<li>登录时，APP端根据一定规则生成二维码，其中包含能标示此设备的Guid；</li>
+<li>手机扫描二维码，根据业务场景需要选择第三方或者自身后台进行鉴权；</li>
+<li>鉴权成功后，后台调用推送接口，推送到指定Guid的APP设备；</li>
+<li>APP端收到此推送，执行登录成功逻辑（推荐使用EventBus,用于异步消息的跨线程处理）。</li>
 </ol>
 <h3 id="2-互踢"><a href="#2-互踢" class="headerlink" title="2. 互踢"></a>2. 互踢</h3><p><strong>自身账户体系要求同一账号只能在一个设备登录或指定数目设备同时登录</strong></p>
 <blockquote>
@@ -195,7 +188,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Android EventBus</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		
 		</ul>

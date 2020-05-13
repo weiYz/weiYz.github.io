@@ -84,19 +84,66 @@
 
 
 
-<meta name="description" content="Looper当一个Activity被创建时，ActivityThread的main()方法会被执行。
-1234567891011public static void main(String[] args) &amp;#123;    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &amp;quot;ActivityThreadMain&amp;quot;);...">
+<meta name="description" content="##synchronized
+很多知识用过但没有梳理出来，就很容易忘。 俗话说好记性不如烂笔头，特地写下来以后备忘。
+synchronized 可以用来修饰以下 3 个层面：
+
+修饰实例方法；
+
+修饰静态类方法；
+
+修饰代码块。
+
+
+
+###synchronized 修饰实例方法
+
+这种情况下的锁对象是当前实例对象，因此只有同一个实例对象调用此方法才会产生互斥效果，不同实例对象之间不会有互斥效果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于Looper的梳理">
-<meta property="og:url" content="http://weiYz.github.io/2018/06/01/关于Looper的梳理/index.html">
+<meta property="og:title" content="关于Synchronized的总结">
+<meta property="og:url" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/index.html">
 <meta property="og:site_name" content="Wei.Yz's Blog">
-<meta property="og:description" content="Looper当一个Activity被创建时，ActivityThread的main()方法会被执行。
-1234567891011public static void main(String[] args) &amp;#123;    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &amp;quot;ActivityThreadMain&amp;quot;);...">
-<meta property="og:updated_time" content="2020-05-09T17:16:42.538Z">
+<meta property="og:description" content="##synchronized
+很多知识用过但没有梳理出来，就很容易忘。 俗话说好记性不如烂笔头，特地写下来以后备忘。
+synchronized 可以用来修饰以下 3 个层面：
+
+修饰实例方法；
+
+修饰静态类方法；
+
+修饰代码块。
+
+
+
+###synchronized 修饰实例方法
+
+这种情况下的锁对象是当前实例对象，因此只有同一个实例对象调用此方法才会产生互斥效果，不同实例对象之间不会有互斥效果。">
+<meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/7.png">
+<meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/1.png">
+<meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/4.png">
+<meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/3.png">
+<meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/6.png">
+<meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/3.png">
+<meta property="og:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/9.png">
+<meta property="og:updated_time" content="2020-05-13T09:01:51.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于Looper的梳理">
-<meta name="twitter:description" content="Looper当一个Activity被创建时，ActivityThread的main()方法会被执行。
-1234567891011public static void main(String[] args) &amp;#123;    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &amp;quot;ActivityThreadMain&amp;quot;);...">
+<meta name="twitter:title" content="关于Synchronized的总结">
+<meta name="twitter:description" content="##synchronized
+很多知识用过但没有梳理出来，就很容易忘。 俗话说好记性不如烂笔头，特地写下来以后备忘。
+synchronized 可以用来修饰以下 3 个层面：
+
+修饰实例方法；
+
+修饰静态类方法；
+
+修饰代码块。
+
+
+
+###synchronized 修饰实例方法
+
+这种情况下的锁对象是当前实例对象，因此只有同一个实例对象调用此方法才会产生互斥效果，不同实例对象之间不会有互斥效果。">
+<meta name="twitter:image" content="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/7.png">
 
 
 
@@ -124,13 +171,13 @@
 
 
 
-  <link rel="canonical" href="http://weiYz.github.io/2018/06/01/关于Looper的梳理/"/>
+  <link rel="canonical" href="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/"/>
 
 
 
 
 
-  <title> 关于Looper的梳理 | Wei.Yz's Blog </title>
+  <title> 关于Synchronized的总结 | Wei.Yz's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,7 +288,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2018/06/01/关于Looper的梳理/">
+  <link itemprop="mainEntityOfPage" href="http://weiYz.github.io/2020/05/13/关于Synchronized的总结/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wei.yz">
@@ -265,7 +312,7 @@
             
             
               
-                关于Looper的梳理
+                关于Synchronized的总结
               
             
           </h1>
@@ -278,8 +325,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-01T01:04:26+08:00">
-                2018-06-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-13T16:13:00+08:00">
+                2020-05-13
               </time>
             
 
@@ -314,21 +361,49 @@
       
 
       
-        <h3 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h3><p>当一个Activity被创建时，ActivityThread的<code>main()</code>方法会被执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &quot;ActivityThreadMain&quot;);</div><div class="line">...</div><div class="line">	</div><div class="line">    Looper.prepareMainLooper();</div><div class="line">	</div><div class="line">...</div><div class="line">    Looper.loop();</div><div class="line"></div><div class="line">    throw new RuntimeException(&quot;Main thread loop unexpectedly exited&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>主线程Looper的创建是调用Looper的<code>prepareMainLooper()</code>方法来创建Looper对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public static void prepareMainLooper() &#123;</div><div class="line">    prepare(false);</div><div class="line">    synchronized (Looper.class) &#123;</div><div class="line">        if (sMainLooper != null) &#123;</div><div class="line">            throw new IllegalStateException(&quot;The main Looper has already been prepared.&quot;);</div><div class="line">        &#125;</div><div class="line">        sMainLooper = myLooper();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private static void prepare(boolean quitAllowed) &#123;</div><div class="line">    if (sThreadLocal.get() != null) &#123;</div><div class="line">        throw new RuntimeException(&quot;Only one Looper may be created per thread&quot;);</div><div class="line">    &#125;</div><div class="line">    sThreadLocal.set(new Looper(quitAllowed));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里的sThreadLocal对象的类型是ThreadLocal<looper>是一个存放在TLS（Thread-local storage)中的对象容器，储存在其中的对象的特点是每个线程中只有一个，并且个线程中储存的该对象不相同。</looper></p>
-<p>我们在这里新建了一个Looper对象并放入了TLS中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private Looper(boolean quitAllowed) &#123;</div><div class="line">    mQueue = new MessageQueue(quitAllowed);</div><div class="line">    mThread = Thread.currentThread();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>mThread保存了当前运行Looper的进程信息, 而mQueue就是与Looper对应的MessageQueue。</p>
-<p>问题：<br>一个线程只能有一个Looper，如何实现的呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">private static void prepare(boolean quitAllowed) &#123;</div><div class="line">    if (sThreadLocal.get() != null) &#123;</div><div class="line">        throw new RuntimeException(&quot;Only one Looper may be created per thread&quot;);</div><div class="line">    &#125;</div><div class="line">    sThreadLocal.set(new Looper(quitAllowed));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>prepare 重复调用会抛出异常！</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public void set(T value) &#123;</div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    ThreadLocalMap map = getMap(t);</div><div class="line">    if (map != null)</div><div class="line">        map.set(this, value);</div><div class="line">    else</div><div class="line">        createMap(t, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>##synchronized</p>
+<p>很多知识用过但没有梳理出来，就很容易忘。 俗话说好记性不如烂笔头，特地写下来以后备忘。</p>
+<p><strong>synchronized 可以用来修饰以下 3 个层面</strong>：</p>
+<ol>
+<li><p>修饰实例方法；</p>
+</li>
+<li><p>修饰静态类方法；</p>
+</li>
+<li><p>修饰代码块。</p>
+</li>
+</ol>
+<hr>
+<p>###synchronized 修饰实例方法</p>
 <blockquote>
-<p>注意：</p>
-<p>threadlocal正是用的thread对象本身来当key，这样每次在thread里创建一个looper时，系统都会先去全局的threadLocal里的hashmap看看对应的线程id里是否已经存了looper，如果没有，就说明这个线程还没有创建过looper，就正常创建，然后存进hashmap里。如果已经有了，就会报错。如此一来，每个线程就像在自己的环境里保存本地变量一样，互不干扰，这也就是Local的意思。同时，由于message queue是looper里的一个成员，looper是线程唯一的，所以message queue也是线程唯一的.</p>
+<p>这种情况下的<strong>锁对象是当前实例对象</strong>，因此只有同一个实例对象调用此方法才会产生互斥效果，不同实例对象之间不会有互斥效果。</p>
+</blockquote>
+<p>比如如下代码：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/7.png" alt=""></p>
+<p>上述代码，在不同的线程中调用的是不同对象的 printLog 方法，因此彼此之间不会有排斥。运行效果如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/1.png" alt=""></p>
+<p>可以看出，两个线程是乱序执行的。</p>
+<hr>
+<p>如果将代码进行如下修改，两个线程调用同一个对象的 printLog 方法：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/4.png" alt=""></p>
+<p>则执行效果如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/3.png" alt=""></p>
+<p>可以看出：只有某一个线程中的代码执行完之后，才会调用另一个线程中的代码。也就是说此时两个线程间是互斥的。</p>
+<hr>
+<p>###修饰静态类方法</p>
+<blockquote>
+<p>如果 synchronized 修饰的是静态方法，则<strong>锁对象是当前类的 Class 对象</strong>。因此即使在不同线程中调用不同实例对象，也会有互斥效果。</p>
+</blockquote>
+<p> 将 printLog 修改为静态方法，如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/6.png" alt=""></p>
+<p>执行后的打印效果如下：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/3.png" alt=""></p>
+<p>可以看出，两个线程还是依次执行的。</p>
+<hr>
+<p>###synchronized 修饰代码块</p>
+<p>除了直接修饰方法之外，synchronized 还可以作用于代码块，比如DCL的单例模式，如下代码所示：</p>
+<p><img src="/2020/05/13/关于Synchronized的总结/9.png" alt=""></p>
+<blockquote>
+<p>synchronized 作用于代码块时，锁对象就是跟在后面括号中的对象。上图中可以看出任何 Object 对象都可以当作锁对象。</p>
 </blockquote>
 
       
@@ -356,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/10/关于MessageQueue的梳理/" rel="next" title="关于MessageQueue的梳理">
-                <i class="fa fa-chevron-left"></i> 关于MessageQueue的梳理
+              <a href="/2018/06/01/关于Looper的梳理/" rel="next" title="关于Looper的梳理">
+                <i class="fa fa-chevron-left"></i> 关于Looper的梳理
               </a>
             
           </div>
@@ -365,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/13/关于Synchronized的总结/" rel="prev" title="关于Synchronized的总结">
-                关于Synchronized的总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -415,17 +486,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -471,22 +533,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Looper"><span class="nav-number">1.</span> <span class="nav-text">Looper</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
